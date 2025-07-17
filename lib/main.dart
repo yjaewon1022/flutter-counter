@@ -21,9 +21,9 @@ class MyApp extends StatelessWidget {
         // 1 x 1 = 1 부터 9 x 9 = 81까지
         body: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 4, // 4개의 열
-            childAspectRatio: 1.1, // 가로 세로 비율
-            crossAxisSpacing: 7.0, // 열 간격
+            crossAxisCount: 3, // 3개의 열
+            childAspectRatio: 2, // 가로 세로 비율
+            crossAxisSpacing: 1.0, // 열 간격
           ),
           itemCount: 81,
           itemBuilder: (context, index) {
