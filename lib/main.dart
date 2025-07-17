@@ -19,6 +19,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// asdfasdfjaskdfhskljdafhsakjdlfklsdahakljsfsd
+
 // StatefulWidget은 별다른 기능 없이 사용자가 값을 계속 변경할 수 있게 하는
 // State 를 생성하는 기능만 가지고 있다.
 class MyHomePage extends StatefulWidget {
