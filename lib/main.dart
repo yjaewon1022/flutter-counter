@@ -18,12 +18,12 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: appBar,
         // body 부분에 1단 ~ 9단까지 구구단 출력 화면
-        // 1 x 1 = 1 | 2 x 1 = 2  | 3 x 1 = 3  |... | 8 x 1 = 8  | 9 x 1 = 9
-        // 1 x 9 = 9 | 2 x 9 = 18 | 3 x 9 = 27 |... | 8 x 9 = 72 | 9 x 9 = 81
+        // 1 x 1 = 1 부터 9 x 9 = 81까지
         body: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            childAspectRatio: 2.0,
+            crossAxisCount: 4, // 4개의 열
+            childAspectRatio: 1.1, // 가로 세로 비율
+            crossAxisSpacing: 7.0, // 열 간격
           ),
           itemCount: 81,
           itemBuilder: (context, index) {
