@@ -20,7 +20,6 @@ class MyApp extends StatelessWidget {
         // body 부분에 1단 ~ 9단까지 구구단 출력 화면
         // 1 x 1 = 1 | 2 x 1 = 2  | 3 x 1 = 3  |... | 8 x 1 = 8  | 9 x 1 = 9
         // 1 x 9 = 9 | 2 x 9 = 18 | 3 x 9 = 27 |... | 8 x 9 = 72 | 9 x 9 = 81
-        // 한 화면에 나오도록
         body: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3,
