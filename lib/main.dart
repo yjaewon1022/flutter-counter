@@ -1,7 +1,17 @@
+// BottomNavigationBar 에 Color 라는 이름을 가진 Item을 하나 생성하고,
+// 해당 아이템을 클릭하면
+// 화면의 AppBar 부분에 ['좋아하는 색상 고르기'] 라는 이름을 가지도록 생성하고
+// 빨 주 노
+// 초 파 남
+// 보 흰 검
+// 에 해당하는 박스(Container)를 100 x 100 픽셀의 크기로 만들되,
+// 좌우 여백과 상하 여백이 존재하게 만들어보세요.
+
 import 'package:flutter/material.dart';
 import 'book.dart';
 import 'gugudan.dart';
 import 'star.dart';
+import 'color-select.dart';
 
 void main() => runApp(MyApp());
 
@@ -30,10 +40,10 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
   );
 
   final List<Widget> _widgetOptions = <Widget>[
-    Book(), // HomeWidget 클래스
-    Book(), // HomeWidget 클래스
-    Gugudan(), // Hello ~~ 클래스
-    Star(), // Star ~~ 클래스
+    ColorSelect(),
+    Book(),
+    Gugudan(),
+    Star(),
   ];
 
   final PageController _pageController = PageController();
@@ -65,6 +75,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.color_lens), label: 'Color'),
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.wb_cloudy), label: 'Hello'),
           BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Star'),
