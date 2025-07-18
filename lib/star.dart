@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(Star());
 }
 
-class MyApp extends StatelessWidget {
-  MyApp({super.key});
+class Star extends StatelessWidget {
+  Star({super.key});
 
   final Map info = {
     'appTitle': 'StatelessWidget Demo',
