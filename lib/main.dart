@@ -1,11 +1,23 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  final Map info = {
+    'appTitle': 'StatelessWidget Demo',
+    'appBarTitle': 'Flutter Official Site',
+    'titleImageLink':
+        'https://storage.googleapis.com/cms-storage-bucket/2f118a9971e4ca6ad737.png',
+    'titleSectionHeader': 'Flutter on Mobile',
+    'titleSectionBody': 'https://flutter.dev/multi-platform/mobile',
+    'titleSectionScore': 100,
+    'textSection':
+        'Bring your app idea to more users from day one by building with Flutter on iOS and Android simultaneously, without sacrificing features, quality, or performance. All mobile on day one: Reach your full addressable market from day one by targeting users in both ecosystems frmo a single codebase. Do more with less: Unite your mobile development team resources towards building one seamless customer experience. One experience: Release simultaneously on iOS and Android with feature parity for the best experience for all users.',
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +30,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-// asdfasdfjaskdfhskljdafhsakjdlfklsdahakljsfsd
 
 // StatefulWidget은 별다른 기능 없이 사용자가 값을 계속 변경할 수 있게 하는
 // State 를 생성하는 기능만 가지고 있다.
