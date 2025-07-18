@@ -1,41 +1,64 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(GugudanApp());
 }
 
-class MyApp extends StatelessWidget {
+class GugudanApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // Appbar 센터 정렬
-    final appBar = AppBar(
-      title: const Text('Multiplication Window'),
-      centerTitle: true,
-    );
-
     return MaterialApp(
-      title: 'Multiplication Window',
+      title: '구구단',
       home: Scaffold(
-        appBar: appBar,
-        // body 부분에 1단 ~ 9단까지 구구단 출력 화면
-        // 1 x 1 = 1 부터 9 x 9 = 81까지
-        body: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3, // 3개의 열
-            childAspectRatio: 2, // 가로 세로 비율
-            crossAxisSpacing: 1.0, // 열 간격
+        appBar: AppBar(title: const Text('구구단'), centerTitle: true),
+        body: SafeArea(
+          child: Column(
+            children: List.generate(3, (rowIndex) {
+              return Expanded(
+                child: Row(
+                  children: List.generate(3, (colIndex) {
+                    int dan = rowIndex * 3 + colIndex + 1;
+                    return Expanded(
+                      child: Container(
+                        margin: const EdgeInsets.all(4),
+                        padding: const EdgeInsets.all(4),
+                        decoration: BoxDecoration(
+                          color: Colors.blue.shade50,
+                          border: Border.all(color: Colors.grey.shade300),
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          alignment: Alignment.center,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                '$dan단',
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              const SizedBox(height: 4),
+                              ...List.generate(9, (i) {
+                                int num = i + 1;
+                                return Text(
+                                  '$dan × $num = ${dan * num}',
+                                  style: const TextStyle(fontSize: 14),
+                                  textAlign: TextAlign.center,
+                                );
+                              }),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  }),
+                ),
+              );
+            }),
           ),
-          itemCount: 81,
-          itemBuilder: (context, index) {
-            final row = index ~/ 9 + 1;
-            final col = index % 9 + 1;
-            return Center(
-              child: Text(
-                '$row x $col = ${row * col}',
-                style: const TextStyle(fontSize: 16),
-              ),
-            );
-          },
         ),
       ),
     );
