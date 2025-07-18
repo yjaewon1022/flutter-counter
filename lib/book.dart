@@ -11,26 +11,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final storeName = const Text(
-      '롯데리아',
+      "롯데리아",
       style: TextStyle(
         color: Colors.black,
         fontWeight: FontWeight.w800,
-        fontFamily: 'Roboto',
+        fontFamily: "Roboto",
         letterSpacing: 0.5,
         fontSize: 25,
       ),
     );
 
-    final description = Text("맛있는 햄버거");
+    final description = Text("이 가게의 이름은 롯데리아이고, 햄버거가 맛있고 감튀가 제일 맛있음...");
 
-    //가게 이름과 설명을 합친 그룹 하나 만들기
-    final storegroup = Container(
-      //좌우 여백을 주는 기능
-      //Container : 범위를 지정해서 그 범위 내의 스타일 또는 여백 등을 지정하는 클래스
-      //그렇기 때문에 한 가지 위젯만 담을 수 있음
-      //한 가지 위젯만 담는다 = child(단수)
-      //여러 가지 위젯 담을 수 있다 = children (복수)
-      padding: const EdgeInsets.all(20), //좌우 항상 20의  여백
+    // 가게 이름과 설명을 합친 그룹을 하나 만들자!
+    final storeGroup = Container(
+      // 좌우 여백을 주는 기능
+      padding: const EdgeInsets.all(20), // 좌우는 항상 20의 여백을 가지고 있을거야
       child: Column(children: [storeName, description]),
     );
 
@@ -39,11 +35,12 @@ class MyApp extends StatelessWidget {
       children: [
         Icon(Icons.star, color: Colors.green[500]),
         Icon(Icons.star, color: Colors.green[500]),
-        const Icon(Icons.star, color: Colors.black),
+        Icon(Icons.star, color: Colors.black),
       ],
     );
+
     final item2 = const Text(
-      '170 Reviews',
+      '170 Reviewers',
       style: TextStyle(
         color: Colors.black,
         fontWeight: FontWeight.w800,
@@ -54,17 +51,16 @@ class MyApp extends StatelessWidget {
     );
 
     final item3 = Icon(Icons.kitchen, color: Colors.green[500]);
+
     final item4 = Icon(Icons.timer, color: Colors.green[500]);
+
     final item5 = Icon(Icons.restaurant, color: Colors.green[500]);
-    final item6 = const Text('kitchen');
 
-    final item7 = const Text('timer');
+    final item6 = const Text('kitchen:');
 
-    final item8 = const Text('restarant');
+    final item7 = const Text('timer:');
 
-    //가게 이름을 맨 위에 적어보자
-    //가게 이름과,group1,group2의 바로 위에 올라갈 수 있게 만들어보자
-    //그룹으로 하나로 묶어줘야 같이 붙을 수 있다
+    final item8 = const Text('restaurant:');
 
     final group1 = Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -82,12 +78,12 @@ class MyApp extends StatelessWidget {
     );
 
     final group2 = DefaultTextStyle.merge(
-      style: TextStyle(
-        color: Colors.red,
+      style: const TextStyle(
+        color: Colors.black,
         fontWeight: FontWeight.w800,
-        fontFamily: 'Roboto',
+        fontFamily: "Roboto",
         letterSpacing: 0.5,
-        fontSize: 20,
+        fontSize: 18,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -102,6 +98,10 @@ class MyApp extends StatelessWidget {
       ),
     );
 
+    // Container : 범위를 지정해서 그 범위 내의 스타일 또는 여백 등등을 지정해주는 클래스
+    // 그렇기 때문에 한 가지 위젯만 담을 수 있음
+    // 한 가지 위젯만 담는다 -> child (단수형)
+    // 여러 가지 위젯을 담을 수 있다 -> children (복수형)
     final groupAggregated = Container(
       padding: const EdgeInsets.all(20),
       child: Column(
@@ -111,20 +111,25 @@ class MyApp extends StatelessWidget {
         ],
       ),
     );
-    //가게 이름을 맨 위에 띄우기
-    //가게 이름과 그룹1,그룹2의 바로 위에 올라갈 수 있게 만들기
-    //
-    final namegroup = Column(
+
+    // 가게 이름을 맨 위에 띄워보자!
+    // 가게 이름과 group1, group2 의 바로 위에 올라갈 수 있게 만들어보자.
+    // 그룹으로 하나로 묶어줘야 얘네가 같이 붙을 수 있겠구나!
+    // 설명까지 작성하고 나니, 설명이 화면을 전체 가로에 적혀있어서 투박하네.
+    // 이걸 좌우 여백을 줘서 좀더 이쁘게 만들어보자!
+
+    final nameGroup = Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [storegroup, groupAggregated],
+      children: [storeGroup, groupAggregated],
     );
+
     return MaterialApp(
       title: 'App Title',
       home: Scaffold(
         appBar: AppBar(title: const Text("AppBar Title")),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [namegroup],
+          children: [nameGroup],
         ),
       ),
     );
