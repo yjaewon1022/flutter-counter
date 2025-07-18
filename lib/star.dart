@@ -6,11 +6,11 @@
 // 패키지 : 다른 사람이 만든거 가져온거야
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(Star());
 
 //p430
 // 스테이트리스위젯으로 만들었다.
-class MyApp extends StatelessWidget {
+class Star extends StatelessWidget {
   // 오버라이드 빌드 필수
   @override
   Widget build(BuildContext context) {

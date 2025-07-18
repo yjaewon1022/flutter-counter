@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(Book());
 }
 
-class MyApp extends StatelessWidget {
-  MyApp({super.key});
+class Book extends StatelessWidget {
+  Book({super.key});
   //p.493 플러터 소개 앱만들기
   final Map info = {
     'appTitle': 'StatelessWidget Demo',
@@ -242,7 +242,7 @@ class ColorState extends State<ColorChanger> {
     setState(() {
       //실제 변경할 코드 작성
       if (_boolStatus == true) {
-        _boolStatus == false;
+        _boolStatus = false;
         _statusColor = Colors.deepPurpleAccent;
       } else {
         _boolStatus = true;
