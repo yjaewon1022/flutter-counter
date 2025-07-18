@@ -1,226 +1,207 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
+import 'Book.dart';
+import 'Gugudan.dart';
+import 'Star.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
-  MyApp({super.key});
-
-  final Map info = {
-    'appTitle': 'StatelessWidget Demo',
-    'appBarTitle': 'Flutter Official Site',
-    'titleImageLink':
-        'https://storage.googleapis.com/cms-storage-bucket/2f118a9971e4ca6ad737.png',
-    'titleSectionHeader': 'Flutter on Mobile',
-    'titleSectionBody': 'https://flutter.dev/multi-platform/mobile',
-    'titleSectionScore': 100,
-    'textSection':
-        'Bring your app idea to more users from day one by building with Flutter on iOS and Android simultaneously, without sacrificing features, quality, or performance. All mobile on day one: Reach your full addressable market from day one by targeting users in both ecosystems frmo a single codebase. Do more with less: Unite your mobile development team resources towards building one seamless customer experience. One experience: Release simultaneously on iOS and Android with feature parity for the best experience for all users.',
-  };
-
+class HomeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final titleImage = _buildTitleImage(info['titleImageLink']);
-    Widget textSection = _buildTextSection(info['textSection']);
-    // 다크 테마 / 화이트 테마
-    Widget buttonSection = _buildButtonSection(Theme.of(context).primaryColor);
-    Widget titleSection = _buildTitleSection(
-      info['titleSectionHeader'],
-      info['titleSectionBody'],
-      info['titleSectionScore'],
+    final storeName = const Text(
+      "롯데리아",
+      style: TextStyle(
+        color: Colors.black,
+        fontWeight: FontWeight.w800,
+        fontFamily: "Roboto",
+        letterSpacing: 0.5,
+        fontSize: 25,
+      ),
+    );
+
+    final description = Text("이 가게의 이름은 롯데리아이고, 햄버거가 맛있고 감튀가 제일 맛있음...");
+
+    // 가게 이름과 설명을 합친 그룹을 하나 만들자!
+    final storeGroup = Container(
+      // 좌우 여백을 주는 기능
+      padding: const EdgeInsets.all(20), // 좌우는 항상 20의 여백을 가지고 있을거야
+      child: Column(children: [storeName, description]),
+    );
+
+    final item1 = Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(Icons.star, color: Colors.green[500]),
+        Icon(Icons.star, color: Colors.green[500]),
+        Icon(Icons.star, color: Colors.black),
+      ],
+    );
+
+    final item2 = const Text(
+      '170 Reviewers',
+      style: TextStyle(
+        color: Colors.black,
+        fontWeight: FontWeight.w800,
+        fontFamily: 'Roboto',
+        letterSpacing: 0.5,
+        fontSize: 20,
+      ),
+    );
+
+    final item3 = Icon(Icons.kitchen, color: Colors.green[500]);
+
+    final item4 = Icon(Icons.timer, color: Colors.green[500]);
+
+    final item5 = Icon(Icons.restaurant, color: Colors.green[500]);
+
+    final item6 = const Text('kitchen:');
+
+    final item7 = const Text('timer:');
+
+    final item8 = const Text('restaurant:');
+
+    final group1 = Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [item1, item2],
+    );
+
+    final group3 = Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [item4, item7],
+    );
+
+    final group4 = Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [item5, item8],
+    );
+
+    final group2 = DefaultTextStyle.merge(
+      style: const TextStyle(
+        color: Colors.black,
+        fontWeight: FontWeight.w800,
+        fontFamily: "Roboto",
+        letterSpacing: 0.5,
+        fontSize: 18,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [item3, item6],
+          ),
+          group3,
+          group4,
+        ],
+      ),
+    );
+
+    // Container : 범위를 지정해서 그 범위 내의 스타일 또는 여백 등등을 지정해주는 클래스
+    // 그렇기 때문에 한 가지 위젯만 담을 수 있음
+    // 한 가지 위젯만 담는다 -> child (단수형)
+    // 여러 가지 위젯을 담을 수 있다 -> children (복수형)
+    final groupAggregated = Container(
+      padding: const EdgeInsets.all(20),
+      child: Column(
+        children: [
+          Container(padding: const EdgeInsets.all(20), child: group1),
+          group2,
+        ],
+      ),
+    );
+
+    // 가게 이름을 맨 위에 띄워보자!
+    // 가게 이름과 group1, group2 의 바로 위에 올라갈 수 있게 만들어보자.
+    // 그룹으로 하나로 묶어줘야 얘네가 같이 붙을 수 있겠구나!
+    // 설명까지 작성하고 나니, 설명이 화면을 전체 가로에 적혀있어서 투박하네.
+    // 이걸 좌우 여백을 줘서 좀더 이쁘게 만들어보자!
+
+    final nameGroup = Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [storeGroup, groupAggregated],
     );
 
     return MaterialApp(
-      title: info['appTitle'],
+      title: 'App Title',
       home: Scaffold(
-        appBar: AppBar(title: Text(info['appBarTitle'])),
-        body: ListView(
-          children: [titleImage, titleSection, buttonSection, textSection],
+        appBar: AppBar(title: const Text("AppBar Title")),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [nameGroup],
         ),
       ),
     );
   }
 }
 
-Image _buildTitleImage(String imageName) {
-  return Image.network(imageName, width: 600, height: 240, fit: BoxFit.cover);
-}
-
-Container _buildTitleSection(String name, String addr, int count) {
-  return Container(
-    padding: const EdgeInsets.all(32),
-    child: Row(
-      children: [
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                padding: const EdgeInsets.only(bottom: 8),
-                child: Text(
-                  name,
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ),
-              Text(addr, style: TextStyle(color: Colors.grey[500])),
-            ],
-          ),
-        ),
-        Counter(),
-      ],
-    ),
-  );
-}
-
-Widget _buildButtonSection(Color color) {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    children: [
-      _buildButtonColumn(color, Icons.assistant_navigation, 'Visit'),
-      _buildButtonColumn(color, Icons.add_alert_sharp, 'Alarm'),
-      _buildButtonColumn(color, Icons.share, 'Share'),
-    ],
-  );
-}
-
-Column _buildButtonColumn(Color color, IconData icon, String label) {
-  return Column(
-    mainAxisSize: MainAxisSize.min,
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [ColorChanger(color: color, icon: icon, labal: label)],
-  );
-}
-
-Container _buildTextSection(String section) {
-  return Container(
-    padding: const EdgeInsets.all(32),
-    child: Text(
-      section,
-      softWrap: true,
-      textAlign: TextAlign.justify,
-      style: const TextStyle(height: 1.5, fontSize: 15),
-    ),
-  );
-}
-
-class Counter extends StatefulWidget {
-  const Counter({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget {
+  final _title = 'Flutter SketchApp';
 
   @override
-  State<Counter> createState() => CounterState();
+  Widget build(BuildContext context) {
+    return MaterialApp(title: _title, home: const MyStatefulWidget());
+  }
 }
 
-class CounterState extends State<Counter> {
-  int _counter = 0;
-  bool _boolStatus = false;
-  Color _statusColor = Colors.black;
+class MyStatefulWidget extends StatefulWidget {
+  const MyStatefulWidget({Key? key}) : super(key: key);
 
-  void _buttonPressed() {
+  @override
+  State<MyStatefulWidget> createState() => MyStatefulWidgetState();
+}
+
+class MyStatefulWidgetState extends State<MyStatefulWidget> {
+  final List<Widget> _widgetOptions = <Widget>[HomeWidget(), gugudan(), Star()];
+
+  final PageController _pageController = PageController();
+
+  int _selectedIndex = 0;
+
+  static const TextStyle optionStyle = TextStyle(
+    fontSize: 30,
+    fontWeight: FontWeight.bold,
+  );
+
+  void _onItemTapped(int index) {
     setState(() {
-      if (_boolStatus == true) {
-        _boolStatus = false;
-        _counter--;
-        _statusColor = Colors.black;
-      } else {
-        _boolStatus = true;
-        _counter++;
-        _statusColor == Colors.red;
-      }
+      _selectedIndex = index;
     });
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        IconButton(
-          icon: const Icon(Icons.star),
-          color: _statusColor,
-          onPressed: _buttonPressed,
-        ),
-      ],
-    );
-  }
-}
-
-class ColorChanger extends StatefulWidget {
-  ColorChanger({
-    super.key,
-    required Color color,
-    required IconData icon,
-    required String labal,
-  }) {
-    inputcolor = color;
-    inputicon = icon;
-    inputlabel = labal;
-  }
-
-  late Color inputcolor;
-  late IconData inputicon;
-  late String inputlabel;
-
-  @override
-  State<ColorChanger> createState() =>
-      ChangeClass(color: inputcolor, icon: inputicon, label: inputlabel);
-}
-
-class ChangeClass extends State<ColorChanger> {
-  ChangeClass({
-    required Color color,
-    required String label,
-    required IconData icon,
-  }) {
-    _StatusColor = color;
-    _label = label;
-    _icon = icon;
-  }
-
-  //시용자가 이 아이콘을 눌렀는지에 대한 상태를 저장하는 변수
-  bool _boolStatus = false;
-  //현재 상태에 따른 변경된 아이콘의 색에 대한 상태룰 저장하는 변수
-  Color _StatusColor = Colors.pink;
-  late String _label;
-  late IconData _icon;
-
-  //실제로 status에 저장된 상채를 변경해 줄 수 있는 함수
-  //=사용자가 아이콘 버튼을 눌렀을 떼 동작할 함수
-  void _buttonPressed() {
-    // setState(() {})
-    setState(() {
-      if (_boolStatus == true) {
-        _boolStatus = false;
-        _StatusColor = Colors.black;
-      } else {
-        _boolStatus = true;
-        _StatusColor = Colors.orange;
-      }
-    });
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        IconButton(
-          onPressed: _buttonPressed,
-          icon: Icon(_icon),
-          color: _StatusColor,
-        ),
-        Container(
-          margin: const EdgeInsets.only(top: 8),
-          child: Text(
-            _label,
-            style: TextStyle(
-              fontSize: 13,
-              fontWeight: FontWeight.w400,
-              color: _StatusColor,
+  Widget build(BuildContext contaxt) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: const Text('Flutter Sketch Application')),
+        body: PageView(
+          controller: _pageController,
+          children: <Widget>[
+            Scaffold(
+              body: Center(child: _widgetOptions.elementAt(_selectedIndex)),
             ),
-          ),
+          ],
         ),
-      ],
+        bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.wb_cloudy),
+              label: 'Hello',
+            ),
+            BottomNavigationBarItem(icon: Icon(Icons.star), label: 'star'),
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.white,
+          backgroundColor: Colors.blueAccent,
+          onTap: _onItemTapped,
+        ),
+      ),
     );
   }
 }
