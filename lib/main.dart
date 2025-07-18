@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -67,8 +69,7 @@ Container _buildTitleSection(String name, String addr, int count) {
             ],
           ),
         ),
-        Icon(Icons.star, color: Colors.red[500]),
-        Text('$count'),
+        Counter(),
       ],
     ),
   );
@@ -89,20 +90,7 @@ Column _buildButtonColumn(Color color, IconData icon, String label) {
   return Column(
     mainAxisSize: MainAxisSize.min,
     mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      Icon(icon, color: color),
-      Container(
-        margin: const EdgeInsets.only(top: 8),
-        child: Text(
-          label,
-          style: TextStyle(
-            fontSize: 13,
-            fontWeight: FontWeight.w400,
-            color: color,
-          ),
-        ),
-      ),
-    ],
+    children: [ColorChanger(color: color, icon: icon, labal: label)],
   );
 }
 
@@ -116,4 +104,123 @@ Container _buildTextSection(String section) {
       style: const TextStyle(height: 1.5, fontSize: 15),
     ),
   );
+}
+
+class Counter extends StatefulWidget {
+  const Counter({Key? key}) : super(key: key);
+
+  @override
+  State<Counter> createState() => CounterState();
+}
+
+class CounterState extends State<Counter> {
+  int _counter = 0;
+  bool _boolStatus = false;
+  Color _statusColor = Colors.black;
+
+  void _buttonPressed() {
+    setState(() {
+      if (_boolStatus == true) {
+        _boolStatus = false;
+        _counter--;
+        _statusColor = Colors.black;
+      } else {
+        _boolStatus = true;
+        _counter++;
+        _statusColor == Colors.red;
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        IconButton(
+          icon: const Icon(Icons.star),
+          color: _statusColor,
+          onPressed: _buttonPressed,
+        ),
+      ],
+    );
+  }
+}
+
+class ColorChanger extends StatefulWidget {
+  ColorChanger({
+    super.key,
+    required Color color,
+    required IconData icon,
+    required String labal,
+  }) {
+    inputcolor = color;
+    inputicon = icon;
+    inputlabel = labal;
+  }
+
+  late Color inputcolor;
+  late IconData inputicon;
+  late String inputlabel;
+
+  @override
+  State<ColorChanger> createState() =>
+      ChangeClass(color: inputcolor, icon: inputicon, label: inputlabel);
+}
+
+class ChangeClass extends State<ColorChanger> {
+  ChangeClass({
+    required Color color,
+    required String label,
+    required IconData icon,
+  }) {
+    _StatusColor = color;
+    _label = label;
+    _icon = icon;
+  }
+
+  //시용자가 이 아이콘을 눌렀는지에 대한 상태를 저장하는 변수
+  bool _boolStatus = false;
+  //현재 상태에 따른 변경된 아이콘의 색에 대한 상태룰 저장하는 변수
+  Color _StatusColor = Colors.pink;
+  late String _label;
+  late IconData _icon;
+
+  //실제로 status에 저장된 상채를 변경해 줄 수 있는 함수
+  //=사용자가 아이콘 버튼을 눌렀을 떼 동작할 함수
+  void _buttonPressed() {
+    // setState(() {})
+    setState(() {
+      if (_boolStatus == true) {
+        _boolStatus = false;
+        _StatusColor = Colors.black;
+      } else {
+        _boolStatus = true;
+        _StatusColor = Colors.orange;
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        IconButton(
+          onPressed: _buttonPressed,
+          icon: Icon(_icon),
+          color: _StatusColor,
+        ),
+        Container(
+          margin: const EdgeInsets.only(top: 8),
+          child: Text(
+            _label,
+            style: TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.w400,
+              color: _StatusColor,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 }
