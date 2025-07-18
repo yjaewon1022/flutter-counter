@@ -67,8 +67,7 @@ Container _buildTitleSection(String name, String addr, int count) {
             ],
           ),
         ),
-        Icon(Icons.star, color: Colors.red[500]),
-        Text('$count'),
+        const Counter(),
       ],
     ),
   );
@@ -90,18 +89,9 @@ Column _buildButtonColumn(Color color, IconData icon, String label) {
     mainAxisSize: MainAxisSize.min,
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
-      Icon(icon, color: color),
-      Container(
-        margin: const EdgeInsets.only(top: 8),
-        child: Text(
-          label,
-          style: TextStyle(
-            fontSize: 13,
-            fontWeight: FontWeight.w400,
-            color: color,
-          ),
-        ),
-      ),
+      // Todo: StatefulWidget 으로 변경해서 한 번 누르면 주황색, 다시 누르면 원색으로
+      // 돌아가는 기능을 만들어보자!
+      ColorChanger(color: color, icon: icon, label: label),
     ],
   );
 }
@@ -116,4 +106,129 @@ Container _buildTextSection(String section) {
       style: const TextStyle(height: 1.5, fontSize: 15),
     ),
   );
+}
+
+class ColorChanger extends StatefulWidget {
+  // 생성자 (얘가 어떤 역할 하는지 key 로 구분하는 용도.)
+  ColorChanger({
+    super.key,
+    required Color color,
+    required IconData icon,
+    required String label,
+  }) {
+    inputColor = color;
+    inputIcon = icon;
+    inputLabel = label;
+  }
+
+  // 인스턴스 변수
+  late Color inputColor;
+  late IconData inputIcon;
+  late String inputLabel;
+
+  @override
+  State<ColorChanger> createState() =>
+      ColorState(color: inputColor, icon: inputIcon, label: inputLabel);
+}
+
+class ColorState extends State<ColorChanger> {
+  ColorState({
+    required Color color,
+    required IconData icon,
+    required String label,
+  }) {
+    _statusColor = color;
+    _icon = icon;
+    _label = label;
+  }
+
+  // 사용자가 이 아이콘을 눌렀는지에 대한 상태를 저장하는 변수
+  bool _boolStatus = false;
+  // 현재 상태에 따른 변경될 아이콘의 색 에 대한 상태를 저장하는 변수
+  late Color _statusColor;
+  late IconData _icon;
+  late String _label;
+
+  // 실제로 State 에 저장된 상태를 변경해줄 수 있는 함수
+  // = 사용자가 아이콘 버튼을 눌렀을 때 동작할 함수
+  void _buttonPressed() {
+    // State를 변경하는 코드 작성 -> setState() 함수로 값 변경 가능
+    setState(() {
+      // 사용자가 이미 버튼을 누른 경우
+      if (_boolStatus == true) {
+        _boolStatus = false;
+        _statusColor = Colors.deepPurpleAccent;
+      } else {
+        // 사용자가 아직 버튼을 안누른 상태에서 눌렀을 때에 대한 경우
+        _boolStatus = true;
+        _statusColor = Colors.orange;
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        IconButton(
+          onPressed: _buttonPressed,
+          icon: Icon(_icon),
+          color: _statusColor,
+        ),
+        // Icon(_icon, color: _statusColor),
+        Container(
+          margin: const EdgeInsets.only(top: 8),
+          child: Text(
+            _label,
+            style: TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.w400,
+              color: _statusColor,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class Counter extends StatefulWidget {
+  const Counter({Key? key}) : super(key: key);
+
+  @override
+  State<Counter> createState() => CounterState();
+}
+
+class CounterState extends State<Counter> {
+  int _counter = 0;
+  bool _boolStatus = false;
+  Color _statusColor = Colors.black;
+
+  void _buttonPressed() {
+    setState(() {
+      if (_boolStatus == true) {
+        _boolStatus = false;
+        _counter--;
+        _statusColor = Colors.black;
+      } else {
+        _boolStatus = true;
+        _counter++;
+        _statusColor = Colors.red;
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        IconButton(
+          icon: const Icon(Icons.star),
+          color: _statusColor,
+          onPressed: _buttonPressed,
+        ),
+        Text("$_counter"),
+      ],
+    );
+  }
 }
