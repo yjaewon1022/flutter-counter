@@ -17,9 +17,9 @@ class PasswordTextFieldState extends State<PasswordTextFieldWidget> {
   late bool _cannotSeePassword = true;
 
   void changePasswordVisibility() {
-    //_cannotSeePassword라는 변수에 기존에 있던 _cannotSeePassword 변구의 값을 
+    //_cannotSeePassword라는 변수에 기존에 있던 _cannotSeePassword 변구의 값을
     //반전시켜 넣겠다
-    //!= -> 비교연산자 
+    //!= -> 비교연산자
     _cannotSeePassword = !_cannotSeePassword;
     print(_cannotSeePassword);
   }
@@ -46,17 +46,18 @@ class PasswordTextFieldState extends State<PasswordTextFieldWidget> {
                 //suffixIcon -> 입력창 우측에 표기된 아이콘
                 suffixIcon: IconButton(
                   onPressed: () {
-                    Icon(Icons.visibility);},
-                )
+                    Icon(Icons.visibility);
+                  },
+                  icon: Icon(Icons.visibility),
                 ),
               ),
               onChanged: (value) {
                 changeText(value);
               },
-          ]
             ),
-          
+          ],
         ),
-      );
+      ),
+    );
   }
 }
