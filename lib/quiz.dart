@@ -7,9 +7,10 @@
 
 import 'package:flutter/material.dart';
 import './book.dart';
-import './guguda.dart';
+import './gugudan.dart';
 import './star.dart';
 import './palette.dart';
+import './hello.dart';
 
 void main() => runApp(MyApp());
 
@@ -48,6 +49,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
     Gugudan(),
     Star(),
     Palette(),
+    HelloWidget(),
   ];
 
   // 사용자가 터치함에 따라 인덱스를 바꿔서 화면전환
@@ -68,7 +70,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(title: const Text('Flutter Sketch Application')),
+      appBar: AppBar(title: const Text('Flutter Sketch Application')),
       // PageView위젯 : 대표메뉴를 보여주고, 선택한메뉴에따라 콘텐츠보여줌
       body: PageView(
         controller: _pageController,
@@ -81,12 +83,16 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
                 BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.wb_cloudy),
-                  label: 'Hello',
+                  label: 'Gugudan',
                 ),
                 BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Star'),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.palette),
                   label: 'Color',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.touch_app),
+                  label: 'Dialog',
                 ),
               ],
               currentIndex: _selectedIndex,

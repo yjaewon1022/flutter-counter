@@ -47,14 +47,10 @@ class Book extends StatelessWidget {
       info['titleSectionScore'],
     );
 
-    return MaterialApp(
-      title: info['appTitle'],
-      home: Scaffold(
-        appBar: AppBar(title: Text(info['appBarTitle'])),
-        // p.495 ListView 항목나열(Row위젯과 다르게 스크롤 가능!)
-        body: ListView(
-          children: [titleImage, titleSection, buttonSection, textSection],
-        ),
+    return Scaffold(
+      // p.495 ListView 항목나열(Row위젯과 다르게 스크롤 가능!)
+      body: ListView(
+        children: [titleImage, titleSection, buttonSection, textSection],
       ),
     );
   }

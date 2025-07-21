@@ -115,16 +115,10 @@ class Star extends StatelessWidget {
       children: [storeGroup, groupAggregated],
     );
 
-    return MaterialApp(
-      //어플 이름 title
-      title: 'App Title',
-      //화면 구현 home
-      home: Scaffold(
-        appBar: AppBar(title: const Text('AppBar Title')),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [nameGroup],
-        ),
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [nameGroup],
       ),
     );
   }
