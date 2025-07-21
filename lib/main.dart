@@ -11,10 +11,13 @@ import 'package:flutter/material.dart';
 // import 'book.dart';
 // import 'gugudan.dart';
 // import 'star.dart';
-import 'color-select.dart';
+// import 'color-select.dart';
 // import 'hello.dart';
 import 'textfield/normal.dart';
 import 'textfield/number.dart';
+import 'textField/password.dart';
+import 'textField/multiline.dart';
+import 'note.dart';
 
 void main() => runApp(MyApp());
 
@@ -50,6 +53,9 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
     // HelloWidget(),
     NormalTextFieldWidget(),
     NumberTextFieldWidget(),
+    PasswordTextFieldWidget(),
+    MultiLineTextFieldWidget(),
+    ParsonTextFieldWidget(),
   ];
 
   final PageController _pageController = PageController();
@@ -93,6 +99,15 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
           BottomNavigationBarItem(
             icon: Icon(Icons.numbers_rounded),
             label: '숫자 입력창',
+          ),
+          BottomNavigationBarItem(icon: Icon(Icons.lock), label: '비밀번호 입력창'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.multiline_chart),
+            label: '다중줄 입력창',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.multitrack_audio_outlined),
+            label: '자기소개서 입력창',
           ),
         ],
         currentIndex: _selectedIndex,

@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  return runApp(NormalTextFieldWidget());
+  return runApp(MaxLengthTextFieldWidget());
 }
 
 // StatelessWidget 과 StatefulWidget 중 어느 것을 써야할까?
 // 앱에서 실시간으로 사용자가 입력한 값을 가져와서 화면에 띄어줘야 하기 때문에
 // StatefulWidget을 사용해야 합니다.
-class NormalTextFieldWidget extends StatefulWidget {
+class MaxLengthTextFieldWidget extends StatefulWidget {
   @override
-  State<NormalTextFieldWidget> createState() => NormalTextFieldState();
+  State<MaxLengthTextFieldWidget> createState() => MaxLengthTextFieldState();
 }
 
-class NormalTextFieldState extends State<NormalTextFieldWidget> {
+class MaxLengthTextFieldState extends State<MaxLengthTextFieldWidget> {
   // 사용자가 입력창에 입력한 값을 저장하는 인스턴스 변수
   late String _text = "";
 
@@ -37,8 +37,9 @@ class NormalTextFieldState extends State<NormalTextFieldWidget> {
         child: ListView(
           children: [
             TextField(
+              maxLength: 10,
               decoration: InputDecoration(
-                labelText: '이름을 입력하세요',
+                labelText: '메모를 입력하세요',
 
                 border: OutlineInputBorder(),
               ),
