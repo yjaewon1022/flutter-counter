@@ -9,6 +9,7 @@
 
 // Material 이라고 부르는 안드로이드 운영체제 전용 그래픽 라이브러리
 import 'package:flutter/material.dart';
+
 // Apple 전용 그래픽 라이브러리 도 있음!
 // import 'package:flutter/cupertino.dart';
 
@@ -55,34 +56,120 @@ class Gugudan extends StatelessWidget {
       }
     }
 
-    return MaterialApp(
-      title: 'App Title',
-      home: Scaffold(
-        appBar: AppBar(title: const Center(child: Text("구구단 화면"))),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [Text(gugudan1), Text(gugudan2), Text(gugudan3)],
-              ),
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                TextButton(
+                  onPressed: () {
+                    showAlertDialog(context, gugudan1, "1단");
+                  },
+                  child: Text("1단"),
+                ),
+                TextButton(
+                  onPressed: () {
+                    showAlertDialog(context, gugudan2, "2단");
+                  },
+                  child: Text("2단"),
+                ),
+                TextButton(
+                  onPressed: () {
+                    showAlertDialog(context, gugudan3, "3단");
+                  },
+                  child: Text("3단"),
+                ),
+              ],
             ),
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [Text(gugudan4), Text(gugudan5), Text(gugudan6)],
-              ),
+          ),
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                TextButton(
+                  onPressed: () {
+                    showAlertDialog(context, gugudan4, "4단");
+                  },
+                  child: Text("4단"),
+                ),
+                TextButton(
+                  onPressed: () {
+                    showAlertDialog(context, gugudan5, "5단");
+                  },
+                  child: Text("5단"),
+                ),
+                TextButton(
+                  onPressed: () {
+                    showAlertDialog(context, gugudan6, "6단");
+                  },
+                  child: Text("6단"),
+                ),
+              ],
             ),
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [Text(gugudan7), Text(gugudan8), Text(gugudan9)],
-              ),
+          ),
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                TextButton(
+                  onPressed: () {
+                    showAlertDialog(context, gugudan7, "7단");
+                  },
+                  child: Text("7단"),
+                ),
+                TextButton(
+                  onPressed: () {
+                    showAlertDialog(context, gugudan8, "8단");
+                  },
+                  child: Text("8단"),
+                ),
+                TextButton(
+                  onPressed: () {
+                    showAlertDialog(context, gugudan9, "9단");
+                  },
+                  child: Text("9단"),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
+}
+//우리가 현재 가지고 있는 값을 함수에게 전달하는 방법
+// 가지고 있는 값-> name
+// 가지고 있는 함수 -> void hello(){}
+// 함수의 소괄호 부분에 우리가 가지고 있는 값을 전달해 줄 수 있는 변수를 작성한다.
+// ex) void hello(String name){}
+// hello 라는 함수에서 name 이라는 변수를 받아서 사용하겠다.
+
+void showAlertDialog(BuildContext context, String gugudan, String title) async {
+  String result = await showDialog(
+    context: context,
+    barrierDismissible: false,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text(title),
+        content: Text(gugudan),
+        actions: <Widget>[
+          TextButton(
+            child: const Text('OK'),
+            onPressed: () {
+              Navigator.pop(context, "OK");
+            },
+          ),
+          TextButton(
+            child: const Text('Cancel'),
+            onPressed: () {
+              Navigator.pop(context, "Cancel");
+            },
+          ),
+        ],
+      );
+    },
+  );
 }

@@ -123,14 +123,10 @@ class Book extends StatelessWidget {
       children: [storeGroup, groupAggregated],
     );
 
-    return MaterialApp(
-      title: 'App Title',
-      home: Scaffold(
-        appBar: AppBar(title: const Text("AppBar Title")),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [nameGroup],
-        ),
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [nameGroup],
       ),
     );
   }

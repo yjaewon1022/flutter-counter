@@ -12,6 +12,7 @@ import 'book.dart';
 import 'gugudan.dart';
 import 'star.dart';
 import 'color-select.dart';
+import 'hello.dart';
 
 void main() => runApp(MyApp());
 
@@ -44,6 +45,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
     Book(),
     Gugudan(),
     Star(),
+    HelloWidget(),
   ];
 
   final PageController _pageController = PageController();
@@ -63,7 +65,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Flutter 예제')),
+      appBar: AppBar(title: const Text('구구단')),
       body: PageView(
         controller: _pageController,
         children: <Widget>[
@@ -79,6 +81,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.wb_cloudy), label: 'Hello'),
           BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Star'),
+          BottomNavigationBarItem(icon: Icon(Icons.handshake), label: "Dialog"),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.white,
