@@ -55,7 +55,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
     NumberTextFieldWidget(),
     PasswordTextFieldWidget(),
     MultiLineTextFieldWidget(),
-    ParsonTextFieldWidget(),
+    NoteTextFieldWidget(),
   ];
 
   final PageController _pageController = PageController();

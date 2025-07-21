@@ -39,7 +39,6 @@ class NormalTextFieldState extends State<NormalTextFieldWidget> {
             TextField(
               decoration: InputDecoration(
                 labelText: '이름을 입력하세요',
-
                 border: OutlineInputBorder(),
               ),
               // onChanged 기능을 이용하려면 사용자가 입력창의 내용을 바꿀 때 마다

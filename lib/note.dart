@@ -8,18 +8,18 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  return runApp(ParsonTextFieldWidget());
+  return runApp(NoteTextFieldWidget());
 }
 
 // StatelessWidget 과 StatefulWidget 중 어느 것을 써야할까?
 // 앱에서 실시간으로 사용자가 입력한 값을 가져와서 화면에 띄어줘야 하기 때문에
 // StatefulWidget을 사용해야 합니다.
-class ParsonTextFieldWidget extends StatefulWidget {
+class NoteTextFieldWidget extends StatefulWidget {
   @override
-  State<ParsonTextFieldWidget> createState() => ParsonTextFieldState();
+  State<NoteTextFieldWidget> createState() => NoteTextFieldState();
 }
 
-class ParsonTextFieldState extends State<ParsonTextFieldWidget> {
+class NoteTextFieldState extends State<NoteTextFieldWidget> {
   // 사용자가 입력창에 입력한 값을 저장하는 인스턴스 변수
   late String _text = "";
 
@@ -47,7 +47,6 @@ class ParsonTextFieldState extends State<ParsonTextFieldWidget> {
               maxLength: 5,
               decoration: InputDecoration(
                 labelText: '이름을 입력하세요',
-
                 border: OutlineInputBorder(),
               ),
               // onChanged 기능을 이용하려면 사용자가 입력창의 내용을 바꿀 때 마다
@@ -60,7 +59,6 @@ class ParsonTextFieldState extends State<ParsonTextFieldWidget> {
               maxLength: 20,
               decoration: InputDecoration(
                 labelText: '직업을 입력하세요',
-
                 border: OutlineInputBorder(),
               ),
               // onChanged 기능을 이용하려면 사용자가 입력창의 내용을 바꿀 때 마다
@@ -70,10 +68,23 @@ class ParsonTextFieldState extends State<ParsonTextFieldWidget> {
               },
             ),
             TextField(
-              maxLength: 5,
+              keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
-                labelText: '이름을 입력하세요',
-
+                labelText: '이메일을 입력하세요',
+                border: OutlineInputBorder(),
+              ),
+              // onChanged 기능을 이용하려면 사용자가 입력창의 내용을 바꿀 때 마다
+              // 안에 있는 함수가 실행이 되는구나!
+              onChanged: (value) {
+                changeText(value);
+              },
+            ),
+            Padding(padding: EdgeInsetsGeometry.all(10)),
+            TextField(
+              maxLength: 500,
+              maxLines: 7,
+              decoration: InputDecoration(
+                labelText: '자기소개서 내용을 입력하세요',
                 border: OutlineInputBorder(),
               ),
               // onChanged 기능을 이용하려면 사용자가 입력창의 내용을 바꿀 때 마다

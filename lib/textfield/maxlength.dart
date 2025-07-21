@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// 글자수 제한 입력창
 void main() {
   return runApp(MaxLengthTextFieldWidget());
 }
@@ -40,7 +41,6 @@ class MaxLengthTextFieldState extends State<MaxLengthTextFieldWidget> {
               maxLength: 10,
               decoration: InputDecoration(
                 labelText: '메모를 입력하세요',
-
                 border: OutlineInputBorder(),
               ),
               // onChanged 기능을 이용하려면 사용자가 입력창의 내용을 바꿀 때 마다
