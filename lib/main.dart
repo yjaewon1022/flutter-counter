@@ -45,6 +45,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
     Book(),
     Gugudan(),
     Star(),
+    HelloWidget(),
   ];
 
   final PageController _pageController = PageController();
