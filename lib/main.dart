@@ -15,10 +15,10 @@ import 'package:flutter/material.dart';
 // import 'color-select.dart';
 // import 'hello.dart';
 import 'textfield/normal.dart';
-import 'textfield/number.dart';
-import 'textfield/password.dart';
-import 'textfield/multiline.dart';
-import 'textfield/maxlength.dart';
+// import 'textfield/number.dart';
+// import 'textfield/password.dart';
+// import 'textfield/multiline.dart';
+// import 'textfield/maxlength.dart';
 
 void main() => runApp(MyApp());
 
@@ -52,11 +52,11 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
     // Gugudan(),
     // Star(),
     // HelloWidget(),
-    // NormalTextFieldWidget(),
+    NormalTextFieldWidget(),
     // NumberTextFieldWidget(),
     // PasswordTextFieldWidget(),
-    MultiLineTextFieldWidget(),
-    MaxLengthTextFieldWidget(),
+    // MultiLineTextFieldWidget(),
+    // MaxLengthTextFieldWidget(),
     NoteWidget(),
   ];
 
@@ -94,23 +94,23 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
           // BottomNavigationBarItem(icon: Icon(Icons.wb_cloudy), label: 'Hello'),
           // BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Star'),
           // BottomNavigationBarItem(icon: Icon(Icons.handshake), label: 'Dialog'),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.text_fields),
-          //   label: "기본 입력창",
-          // ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.text_fields),
+            label: "기본 입력창",
+          ),
           // BottomNavigationBarItem(
           //   icon: Icon(Icons.numbers_rounded),
           //   label: '숫자 입력창',
           // ),
           // BottomNavigationBarItem(icon: Icon(Icons.lock), label: '비밀번호 입력창'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.input_sharp),
-            label: '다중줄 입력창',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.text_decrease),
-            label: "글자수제한 입력창",
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.input_sharp),
+          //   label: '다중줄 입력창',
+          // ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.text_decrease),
+          //   label: "글자수제한 입력창",
+          // ),
           BottomNavigationBarItem(icon: Icon(Icons.note_add), label: "자소서 작성"),
         ],
         currentIndex: _selectedIndex,
