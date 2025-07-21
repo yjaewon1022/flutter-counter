@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-// import '파일명'
-import 'book.dart';
-import 'gugudan.dart';
-import 'star.dart';
-import 'colors.dart';
-import 'hello.dart';
+// import 'book.dart';
+// import 'gugudan.dart';
+// import 'star.dart';
+import 'color-select.dart';
+// import 'hello.dart';
 import 'textfield/normal.dart';
 import 'textfield/number.dart';
 
@@ -37,10 +36,10 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
   final List<Widget> _widgetOptions = <Widget>[
     // ColorSelect(),
     // Book(),
-    //  Gugudan(),
-    //  Star(),
+    // Gugudan(),
+    // Star(),
     // HelloWidget(),
-    NormalTextfieldWidget(),
+    NormalTextFieldWidget(),
     NumberTextFieldWidget(),
   ];
 
@@ -80,9 +79,12 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
           // BottomNavigationBarItem(icon: Icon(Icons.handshake), label: 'Dialog'),
           BottomNavigationBarItem(
             icon: Icon(Icons.text_fields),
-            label: '기본 입력창',
+            label: "기본 입력창",
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.numbers), label: '숫자 입력창'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.numbers_rounded),
+            label: '숫자 입력창',
+          ),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.white,
