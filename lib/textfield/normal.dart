@@ -5,11 +5,11 @@ void main() {
 }
 
 // StatelessWidget 과 StatefulWidget 중 어느 것을 써야할까?
-// 앱에서 실시간으로 사용자가 입력한 값을 가져와서 화면에 띄워줘야 하기 때문에
+// 앱에서 실시간으ㅗ 사용자가 입력한 값을 가져와서 화면에 띄어줘야 하기 때문에
 // StatefulWidget을 사용해야 합니다.
 class NormalTextFieldWidget extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => NormalTextFieldState();
+  State<NormalTextFieldWidget> createState() => NormalTextFieldState();
 }
 
 class NormalTextFieldState extends State<NormalTextFieldWidget> {
@@ -17,9 +17,9 @@ class NormalTextFieldState extends State<NormalTextFieldWidget> {
   late String _text = "";
 
   // state 의 값을 변경해주는 기능을 구현하면
-  // 사용자가 입력창에 입력한 값을 실제로 화면에 띄워볼수도 있겠구나!
+  // 사용자가 입력창에 입력한 값을 실제로 화면에 띄어볼 수도 있겠구나!
   // state 의 값을 변경해주는 기능을 변경하는 함수가 무엇이였지?
-  // setState(() {});
+  //  setState(() {});
   void changeText(String value) {
     setState(() {
       // _text 인스턴스변수 안에 값을 넣어야겠다!
@@ -39,9 +39,10 @@ class NormalTextFieldState extends State<NormalTextFieldWidget> {
             TextField(
               decoration: InputDecoration(
                 labelText: '이름을 입력하세요',
+
                 border: OutlineInputBorder(),
               ),
-              // onChanged 기능을 이용하면 사용자가 입력창의 내용을 바꿀 때 마다
+              // onChanged 기능을 이용하려면 사용자가 입력창의 내용을 바꿀 때 마다
               // 안에 있는 함수가 실행이 되는구나!
               onChanged: (value) {
                 changeText(value);
