@@ -58,7 +58,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
     NormalTextFieldWidget(),
     NumberTextField(),
     Calculation(),
-    Password(),
+    PasswordTextFieldWidget(),
   ];
 
   // 사용자가 터치함에 따라 인덱스를 바꿔서 화면전환

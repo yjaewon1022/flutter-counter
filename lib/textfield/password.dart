@@ -1,39 +1,30 @@
-// quiz.
-// 입력창 2개에 값을 넣으면
-// 각각 +-/*한 결과를 텍스트로 출력해라
-// [5 + 7의 결과는 12입니다.]
-
 import 'package:flutter/material.dart';
 
 void main() {
-  return runApp(Password());
+  return runApp(PasswordTextFieldWidget());
 }
 
-class Password extends StatefulWidget {
+class PasswordTextFieldWidget extends StatefulWidget {
   @override
-  State<Password> createState() => PasswordState();
+  State<PasswordTextFieldWidget> createState() => PasswordTextFieldState();
 }
 
-class PasswordState extends State<Password> {
-  // 계산 값 담아줄 변수 선언
-  late String num1 = "0";
-  late String num2 = "0";
-  // late double plus;
-  // late double minus;
+class PasswordTextFieldState extends State<PasswordTextFieldWidget> {
+  late String _text = "0";
 
-  //   num2 = b;
-  // plus = a + b;
-  // minus = a - b;
+  // 비밀번호 노출 여부를 정하는 변수
+  late bool _cannotSeePassword = true;
 
-  void calTextA(String a) {
-    setState(() {
-      num1 = a;
-    });
+  //
+  void changePasswordVisibility() {
+    // bool값을 반대로 바꿔줘
+    _cannotSeePassword = !_cannotSeePassword;
+    print(_cannotSeePassword);
   }
 
-  void calTextB(String b) {
+  void changeText(String value) {
     setState(() {
-      num2 = b;
+      _text = value;
     });
   }
 
@@ -41,45 +32,25 @@ class PasswordState extends State<Password> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.all(10),
         child: ListView(
           children: [
             TextField(
-              decoration: InputDecoration(labelText: "첫번째 숫자 입력"),
-              keyboardType: TextInputType.number,
-              // onchanged : 입력값이 수정될때마다 가져올 수 있음
-              onChanged: (a) {
-                calTextA(a);
-              },
-            ),
-            TextField(
-              decoration: InputDecoration(labelText: "두번째 숫자 입력"),
-              keyboardType: TextInputType.number,
-              // onchanged : 입력값이 수정될때마다 가져올 수 있음
-              onChanged: (b) {
-                calTextB(b);
-              },
-            ),
-
-            // 결과 출력
-            Container(
-              padding: EdgeInsets.all(20),
-              child: Column(
-                children: [
-                  Text(
-                    "$num1 + $num2 의 결과는 ${int.parse(num1) + int.parse(num2)}입니다.",
-                  ),
-                  Text(
-                    "$num1 - $num2 의 결과는 ${int.parse(num1) - int.parse(num2)}입니다.",
-                  ),
-                  Text(
-                    "$num1 x $num2 의 결과는 ${int.parse(num1) * int.parse(num2)}입니다.",
-                  ),
-                  Text(
-                    "$num1 / $num2 의 결과는 ${double.parse(num1) / double.parse(num2)}입니다.",
-                  ),
-                ],
+              //obscureText 입력값 보안해줌 : ****
+              obscureText: _cannotSeePassword,
+              decoration: InputDecoration(
+                labelText: "비밀번호",
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    // 누르면 bool값 반대로 바꿔줘
+                    changePasswordVisibility();
+                  },
+                  icon: Icon(Icons.visibility),
+                ),
               ),
+              onChanged: (value) {
+                changeText(value);
+              },
             ),
           ],
         ),
