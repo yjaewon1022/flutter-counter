@@ -1,104 +1,104 @@
-import 'package:flutter/material.dart';
+// BottomNavigationBar 에 Color 라는 이름을 가진 Item을 하나 생성하고,
+// 해당 아이템을 클릭하면
+// 화면의 AppBar 부분에 ['좋아하는 색상 고르기'] 라는 이름을 가지도록 생성하고
+// 빨 주 노
+// 초 파 남
+// 보 흰 검
+// 에 해당하는 박스(Container)를 100 x 100 픽셀의 크기로 만들되,
+// 좌우 여백과 상하 여백이 존재하게 만들어보세요.
 
-void main() {
-  runApp(const MyApp());
-}
+import 'package:flutter/material.dart';
+// import 'book.dart';
+// import 'gugudan.dart';
+// import 'star.dart';
+import 'color-select.dart';
+// import 'hello.dart';
+import 'textfield/normal.dart';
+import 'textfield/number.dart';
+
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final _title = 'Flutter 예제';
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+    return MaterialApp(title: _title, home: const MyStatefulWidget());
   }
 }
 
-// asdfasdfjaskdfhskljdafhsakjdlfklsdahakljsfsd
+class MyStatefulWidget extends StatefulWidget {
+  const MyStatefulWidget({Key? key}) : super(key: key);
 
-// StatefulWidget은 별다른 기능 없이 사용자가 값을 계속 변경할 수 있게 하는
-// State 를 생성하는 기능만 가지고 있다.
-class MyHomePage extends StatefulWidget {
-  // MyHomePage 클래스의 생성자
-  const MyHomePage({super.key, required this.title});
-
-  // 인스턴스 변수
-  final String title;
-
-  // 사용자가 앱 사용 중 계속해서 값을 변경할 수 있는 State를 생성할 수 있게 해주는 함수
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyStatefulWidget> createState() => MyStatefulWidgetState();
 }
 
-// State<MyHomePage> : MyHomePage 라는 클래스의 State 입니다. 라는 것을 명시해주는 것
-class _MyHomePageState extends State<MyHomePage> {
-  // 인스턴스 변수 (사용자가 앱에서 실제로 변경할 수 있는 값)
-  int _counter = 0;
+class MyStatefulWidgetState extends State<MyStatefulWidget> {
+  int _selectedIndex = 0;
 
-  // _incrementCounter() : State 클래스 내에서 사용할 수 있는 기능(함수)
-  void _incrementCounter() {
-    // setState : 이 클래스에서 가지고 있는 인스턴스 변수의 값을 바꿀 때 사용하는 기능(함수)
+  static const TextStyle optionStyle = TextStyle(
+    fontSize: 30,
+    fontWeight: FontWeight.bold,
+  );
+
+  final List<Widget> _widgetOptions = <Widget>[
+    // ColorSelect(),
+    // Book(),
+    // Gugudan(),
+    // Star(),
+    // HelloWidget(),
+    NormalTextFieldWidget(),
+    NumberTextFieldWidget(),
+  ];
+
+  final PageController _pageController = PageController();
+
+  void _onItemTapped(int index) {
     setState(() {
-      _counter++;
+      _selectedIndex = index;
     });
   }
 
-  // upperCamelCase 가 무엇인가?
-  // 항상 식별자의 첫번째 문자는 대문자로 표기 해야 하며, 만약 여러단어가 포함되어 있는 경우라면, 각 단어를 구분짓게 해주기 위해서 마찬가지로 대문자로 표기해야 한다.
-  // 사용방법 : (숫자 더하기 라는 기능을 하는 함수 이름을 짓고싶다.) add + number
-  // upperCamelCase 사용 시 : AddNumber
-  // lowerCamelCase : addNumber
-
-  // 빼기를 할 수 있는 기능
-  void decrementCounter() {
-    setState(() {
-      _counter--;
-    });
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
   }
 
-  // State 로 선언된 클래스는 현재 내가 가지고 있는 값을 어떻게 반환할건지
-  // build() 기능을 통해서 외부(StatefulWidget인 MyHomePage)로 전달해주어야 함.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      // 이 부분을 수정해서 왼쪽 버튼을 누르면 -, 오른쪽 버튼을 누르면 + 하는 기능 추가
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          FloatingActionButton(
-            onPressed: decrementCounter,
-            tooltip: 'Decrement',
-            child: const Text("-"),
-          ),
-          // 빈 칸을 뜻하는 클래스를 하나 추가할 수도 있음 : Padding
-          Padding(padding: EdgeInsets.all(10)),
-          FloatingActionButton(
-            onPressed: _incrementCounter,
-            tooltip: 'Increment',
-            child: const Icon(Icons.add),
+      appBar: AppBar(title: const Text('Flutter 예제')),
+      body: PageView(
+        controller: _pageController,
+        children: <Widget>[
+          Scaffold(
+            body: Center(child: _widgetOptions.elementAt(_selectedIndex)),
           ),
         ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        items: const <BottomNavigationBarItem>[
+          // BottomNavigationBarItem(icon: Icon(Icons.color_lens), label: 'Color'),
+          // BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          // BottomNavigationBarItem(icon: Icon(Icons.wb_cloudy), label: 'Hello'),
+          // BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Star'),
+          // BottomNavigationBarItem(icon: Icon(Icons.handshake), label: 'Dialog'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.text_fields),
+            label: "기본 입력창",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.numbers_rounded),
+            label: '숫자 입력창',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.white,
+        backgroundColor: Colors.blueAccent,
+        onTap: _onItemTapped,
       ),
     );
   }
