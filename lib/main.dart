@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 // import 'book.dart';
 // import 'gugudan.dart';
 // import 'star.dart';
-import 'color-select.dart';
+//import 'color-select.dart';
 // import 'hello.dart';
-import 'textfield/normal.dart';
-import 'textfield/number.dart';
-import 'textfield/password.dart';
+//import 'textfield/normal.dart';
+// import 'textfield/number.dart';
+//import 'textfield/password.dart';
+//import 'textfield/multiLine.dart';
+//import 'textfield/maxlength.dart';
+import 'note.dart';
+import 'textfield/buttonInput.dart';
 
 void main() => runApp(MyApp());
 
@@ -40,9 +44,13 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
     // Gugudan(),
     // Star(),
     // HelloWidget(),
-    NormalTextFieldWidget(),
-    NumberTextFieldWidget(),
-    PasswordTextFieldWidget(),
+    // NormalTextFieldWidget(),
+    NoteWidget(),
+    ButtonInputTextFieldWidget(),
+    //   NumberTextFieldWidget(),
+    // PasswordTextFieldWidget(),
+    //MultiLineTextFieldWidget(),
+    // MaxLengthTextFieldWidget(),
   ];
 
   final PageController _pageController = PageController();
@@ -79,18 +87,24 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
           // BottomNavigationBarItem(icon: Icon(Icons.wb_cloudy), label: 'Hello'),
           // BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Star'),
           // BottomNavigationBarItem(icon: Icon(Icons.handshake), label: 'Dialog'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.text_fields),
-            label: "기본 입력창",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.numbers_rounded),
-            label: '숫자 입력창',
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.text_fields),
+          //   label: "기본 입력창",
+          // ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.numbers_rounded),
+          //   label: '직업 입력창',
+          // ),
+          // BottomNavigationBarItem(icon: Icon(Icons.password), label: '이메일 입력창'),
           BottomNavigationBarItem(
             icon: Icon(Icons.password),
-            label: '비밀번호 입력창',
+            label: '자기 소개서 내용',
           ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.multiline_chart),
+          //   label: '다중줄 입력창',
+          // ),
+          BottomNavigationBarItem(icon: Icon(Icons.calculate), label: "계산기"),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.white,
