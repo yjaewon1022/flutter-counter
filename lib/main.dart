@@ -5,6 +5,7 @@ import 'gugudan.dart';
 import 'star.dart';
 import 'colors.dart';
 import 'hello.dart';
+import 'textfield/normal.dart';
 
 void main() => runApp(MyApp());
 
@@ -34,10 +35,11 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
 
   final List<Widget> _widgetOptions = <Widget>[
     ColorSelect(),
-    Book(),
-    Gugudan(),
-    Star(),
-    HelloWidget(),
+    // Book(),
+    //  Gugudan(),
+    //  Star(),
+    // HelloWidget(),
+    NormalTextfieldWidget(),
   ];
 
   final PageController _pageController = PageController();
@@ -70,10 +72,14 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.color_lens), label: 'Color'),
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.wb_cloudy), label: 'Hello'),
-          BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Star'),
-          BottomNavigationBarItem(icon: Icon(Icons.handshake), label: 'Dialog'),
+          // BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          // BottomNavigationBarItem(icon: Icon(Icons.wb_cloudy), label: 'Hello'),
+          // BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Star'),
+          // BottomNavigationBarItem(icon: Icon(Icons.handshake), label: 'Dialog'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.text_fields),
+            label: '기본 입력창',
+          ),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.white,
