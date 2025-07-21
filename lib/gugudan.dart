@@ -55,33 +55,29 @@ class Gugudan extends StatelessWidget {
       }
     }
 
-    return MaterialApp(
-      title: 'App Title',
-      home: Scaffold(
-        appBar: AppBar(title: const Center(child: Text("구구단 화면"))),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [Text(gugudan1), Text(gugudan2), Text(gugudan3)],
-              ),
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [Text(gugudan1), Text(gugudan2), Text(gugudan3)],
             ),
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [Text(gugudan4), Text(gugudan5), Text(gugudan6)],
-              ),
+          ),
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [Text(gugudan4), Text(gugudan5), Text(gugudan6)],
             ),
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [Text(gugudan7), Text(gugudan8), Text(gugudan9)],
-              ),
+          ),
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [Text(gugudan7), Text(gugudan8), Text(gugudan9)],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
