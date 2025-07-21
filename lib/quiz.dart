@@ -5,6 +5,7 @@
 
 //p507
 
+import 'package:counter/textfield/password.dart';
 import 'package:flutter/material.dart';
 import './book.dart';
 import './gugudan.dart';
@@ -14,6 +15,7 @@ import './hello.dart';
 import './textfield/normal.dart';
 import './textfield/number.dart';
 import './textfield/calculation.dart';
+import './textfield/password.dart';
 
 void main() => runApp(MyApp());
 
@@ -56,6 +58,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
     NormalTextFieldWidget(),
     NumberTextField(),
     Calculation(),
+    Password(),
   ];
 
   // 사용자가 터치함에 따라 인덱스를 바꿔서 화면전환
@@ -113,6 +116,10 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
                 BottomNavigationBarItem(
                   icon: Icon(Icons.calculate),
                   label: "계산기",
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.security),
+                  label: "비밀번호",
                 ),
               ],
 

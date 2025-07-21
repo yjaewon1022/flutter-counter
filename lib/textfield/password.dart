@@ -6,15 +6,15 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  return runApp(Calculation());
+  return runApp(Password());
 }
 
-class Calculation extends StatefulWidget {
+class Password extends StatefulWidget {
   @override
-  State<Calculation> createState() => CalculationState();
+  State<Password> createState() => PasswordState();
 }
 
-class CalculationState extends State<Calculation> {
+class PasswordState extends State<Password> {
   // 계산 값 담아줄 변수 선언
   late String num1 = "0";
   late String num2 = "0";
