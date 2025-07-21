@@ -83,40 +83,43 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
         children: <Widget>[
           Scaffold(
             body: Center(child: _widgetOptions.elementAt(_selectedIndex)),
+            bottomNavigationBar: BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
+              items: const <BottomNavigationBarItem>[
+                // BottomNavigationBarItem(icon: Icon(Icons.color_lens), label: 'Color'),
+                // BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+                // BottomNavigationBarItem(icon: Icon(Icons.wb_cloudy), label: 'Hello'),
+                // BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Star'),
+                // BottomNavigationBarItem(icon: Icon(Icons.handshake), label: 'Dialog'),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.text_fields),
+                  label: "기본 입력창",
+                ),
+                // BottomNavigationBarItem(
+                //   icon: Icon(Icons.numbers_rounded),
+                //   label: '숫자 입력창',
+                // ),
+                // BottomNavigationBarItem(icon: Icon(Icons.lock), label: '비밀번호 입력창'),
+                // BottomNavigationBarItem(
+                //   icon: Icon(Icons.input_sharp),
+                //   label: '다중줄 입력창',
+                // ),
+                // BottomNavigationBarItem(
+                //   icon: Icon(Icons.text_decrease),
+                //   label: "글자수제한 입력창",
+                // ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.note_add),
+                  label: "자소서 작성",
+                ),
+              ],
+              currentIndex: _selectedIndex,
+              selectedItemColor: Colors.white,
+              backgroundColor: Colors.blueAccent,
+              onTap: _onItemTapped,
+            ),
           ),
         ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        items: const <BottomNavigationBarItem>[
-          // BottomNavigationBarItem(icon: Icon(Icons.color_lens), label: 'Color'),
-          // BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          // BottomNavigationBarItem(icon: Icon(Icons.wb_cloudy), label: 'Hello'),
-          // BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Star'),
-          // BottomNavigationBarItem(icon: Icon(Icons.handshake), label: 'Dialog'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.text_fields),
-            label: "기본 입력창",
-          ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.numbers_rounded),
-          //   label: '숫자 입력창',
-          // ),
-          // BottomNavigationBarItem(icon: Icon(Icons.lock), label: '비밀번호 입력창'),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.input_sharp),
-          //   label: '다중줄 입력창',
-          // ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.text_decrease),
-          //   label: "글자수제한 입력창",
-          // ),
-          BottomNavigationBarItem(icon: Icon(Icons.note_add), label: "자소서 작성"),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.white,
-        backgroundColor: Colors.blueAccent,
-        onTap: _onItemTapped,
       ),
     );
   }
