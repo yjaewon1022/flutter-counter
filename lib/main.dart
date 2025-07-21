@@ -6,6 +6,7 @@ import 'color-select.dart';
 // import 'hello.dart';
 import 'textfield/normal.dart';
 import 'textfield/number.dart';
+import 'textfield/password.dart';
 
 void main() => runApp(MyApp());
 
@@ -41,6 +42,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
     // HelloWidget(),
     NormalTextFieldWidget(),
     NumberTextFieldWidget(),
+    PasswordTextFieldWidget(),
   ];
 
   final PageController _pageController = PageController();
@@ -84,6 +86,10 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
           BottomNavigationBarItem(
             icon: Icon(Icons.numbers_rounded),
             label: '숫자 입력창',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.password),
+            label: '비밀번호 입력창',
           ),
         ],
         currentIndex: _selectedIndex,
