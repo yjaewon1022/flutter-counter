@@ -7,15 +7,18 @@
 // 에 해당하는 박스(Container)를 100 x 100 픽셀의 크기로 만들되,
 // 좌우 여백과 상하 여백이 존재하게 만들어보세요.
 
+import 'package:counter/note.dart';
 import 'package:flutter/material.dart';
 // import 'book.dart';
 // import 'gugudan.dart';
 // import 'star.dart';
-import 'color-select.dart';
+// import 'color-select.dart';
 // import 'hello.dart';
 import 'textfield/normal.dart';
 import 'textfield/number.dart';
 import 'textfield/password.dart';
+import 'textfield/multiline.dart';
+import 'textfield/maxlength.dart';
 
 void main() => runApp(MyApp());
 
@@ -49,9 +52,12 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
     // Gugudan(),
     // Star(),
     // HelloWidget(),
-    NormalTextFieldWidget(),
-    NumberTextFieldWidget(),
-    PasswordTextFieldWidget(),
+    // NormalTextFieldWidget(),
+    // NumberTextFieldWidget(),
+    // PasswordTextFieldWidget(),
+    MultiLineTextFieldWidget(),
+    MaxLengthTextFieldWidget(),
+    NoteWidget(),
   ];
 
   final PageController _pageController = PageController();
@@ -88,15 +94,24 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
           // BottomNavigationBarItem(icon: Icon(Icons.wb_cloudy), label: 'Hello'),
           // BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Star'),
           // BottomNavigationBarItem(icon: Icon(Icons.handshake), label: 'Dialog'),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.text_fields),
+          //   label: "기본 입력창",
+          // ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.numbers_rounded),
+          //   label: '숫자 입력창',
+          // ),
+          // BottomNavigationBarItem(icon: Icon(Icons.lock), label: '비밀번호 입력창'),
           BottomNavigationBarItem(
-            icon: Icon(Icons.text_fields),
-            label: "기본 입력창",
+            icon: Icon(Icons.input_sharp),
+            label: '다중줄 입력창',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.numbers_rounded),
-            label: '숫자 입력창',
+            icon: Icon(Icons.text_decrease),
+            label: "글자수제한 입력창",
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.lock), label: '비밀번호 입력창'),
+          BottomNavigationBarItem(icon: Icon(Icons.note_add), label: "자소서 작성"),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.white,
