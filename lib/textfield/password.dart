@@ -53,7 +53,7 @@ class PasswordTextFieldState extends State<PasswordTextFieldWidget> {
               },
             ),
             TextField(
-              keyboardType: TextInputType.password,
+              obscureText: true,
               decoration: InputDecoration(
                 labelText: '숫자를 입력하세요',
                 border: OutlineInputBorder(),
