@@ -8,12 +8,13 @@
 // 좌우 여백과 상하 여백이 존재하게 만들어보세요.
 
 import 'package:flutter/material.dart';
-import 'book.dart';
-import 'gugudan.dart';
-import 'star.dart';
+// import 'book.dart';
+// import 'gugudan.dart';
+// import 'star.dart';
 import 'color-select.dart';
-import 'hello.dart';
+// import 'hello.dart';
 import 'textfield/normal.dart';
+import 'textfield/number.dart';
 
 void main() => runApp(MyApp());
 
@@ -42,12 +43,13 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
   );
 
   final List<Widget> _widgetOptions = <Widget>[
-    ColorSelect(),
+    // ColorSelect(),
     // Book(),
     // Gugudan(),
     // Star(),
     // HelloWidget(),
     NormalTextFieldWidget(),
+    NumberTextFieldWidget(),
   ];
 
   final PageController _pageController = PageController();
@@ -79,7 +81,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.color_lens), label: 'Color'),
+          // BottomNavigationBarItem(icon: Icon(Icons.color_lens), label: 'Color'),
           // BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           // BottomNavigationBarItem(icon: Icon(Icons.wb_cloudy), label: 'Hello'),
           // BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Star'),
@@ -87,6 +89,10 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
           BottomNavigationBarItem(
             icon: Icon(Icons.text_fields),
             label: "기본 입력창",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.numbers_rounded),
+            label: '숫자 입력창',
           ),
         ],
         currentIndex: _selectedIndex,
