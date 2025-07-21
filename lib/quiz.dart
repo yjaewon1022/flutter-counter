@@ -12,6 +12,8 @@ import './star.dart';
 import './palette.dart';
 import './hello.dart';
 import './textfield/normal.dart';
+import './textfield/number.dart';
+import './textfield/calculation.dart';
 
 void main() => runApp(MyApp());
 
@@ -50,8 +52,10 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
     // Gugudan(),
     // Star(),
     // Palette(),
-    HelloWidget(),
+    // HelloWidget(),
     NormalTextFieldWidget(),
+    NumberTextField(),
+    Calculation(),
   ];
 
   // 사용자가 터치함에 따라 인덱스를 바꿔서 화면전환
@@ -92,13 +96,23 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
                 //     icon: Icon(Icons.palette),
                 //     label: 'Color',
                 //   ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.touch_app),
-                  label: 'Dialog',
-                ),
+                //-------------------------------------------
+                // BottomNavigationBarItem(
+                //   icon: Icon(Icons.touch_app),
+                //   label: 'Dialog',
+                // ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.text_fields),
                   label: "기본입력창",
+                ),
+                //-------------------------------------------
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.numbers_rounded),
+                  label: "숫자입력창",
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.calculate),
+                  label: "계산기",
                 ),
               ],
 
