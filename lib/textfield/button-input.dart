@@ -15,7 +15,12 @@ class ButtonInputTextFieldState extends State<ButtonInputTextFieldWidget> {
 
   void changeText(String value) {
     setState(() {
-      _text = value;
+      // 숫자 지우기
+      if (_text.isNotEmpty && value == "") {
+        _text = _text.substring(0, _text.length - 1);
+      } else {
+        _text += value;
+      }
     });
   }
 
@@ -26,15 +31,38 @@ class ButtonInputTextFieldState extends State<ButtonInputTextFieldWidget> {
         padding: EdgeInsets.all(10),
         child: ListView(
           children: [
-            TextField(
-              controller: controller,
-              decoration: InputDecoration(
-                labelText: '이름을 입력하세요',
-                border: OutlineInputBorder(),
-              ),
-            ),
+            // TextField(
+            //   controller: controller,
+            //   decoration: InputDecoration(
+            //     labelText: '숫자 입력기',
+            //     border: OutlineInputBorder(),
+            //   ),
+            // ),
             Text(_text),
-            Column(children: []),
+            Column(
+              children: [
+                Row(
+                  children: [
+                    ElevatedButton(
+                      onPressed: () => changeText("1"),
+                      child: Text("1"),
+                    ),
+                    ElevatedButton(
+                      onPressed: () => changeText("2"),
+                      child: Text("2"),
+                    ),
+                    ElevatedButton(
+                      onPressed: () => changeText("3"),
+                      child: Text("3"),
+                    ),
+                    ElevatedButton(
+                      onPressed: () => changeText(""),
+                      child: Text("지우기"),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ],
         ),
       ),
