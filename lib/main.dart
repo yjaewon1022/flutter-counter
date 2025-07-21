@@ -7,6 +7,7 @@
 // 에 해당하는 박스(Container)를 100 x 100 픽셀의 크기로 만들되,
 // 좌우 여백과 상하 여백이 존재하게 만들어보세요.
 
+import 'package:counter/textfield/number.dart';
 import 'package:flutter/material.dart';
 import 'book.dart';
 import 'gugudan.dart';
@@ -14,6 +15,7 @@ import 'star.dart';
 import 'color-select.dart';
 import 'hello.dart';
 import 'textfield/normal.dart';
+import 'textfield/number.dart';
 
 void main() => runApp(MyApp());
 
@@ -48,6 +50,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
     // Star(),
     // HelloWidget(),
     NormalTextFieldWidget(),
+    NumberTextFieldWidget(),
   ];
 
   final PageController _pageController = PageController();
@@ -88,6 +91,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
             icon: Icon(Icons.text_fields),
             label: "기본입력창",
           ),
+          BottomNavigationBarItem(icon: Icon(Icons.text_fields), label: "예제"),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.white,

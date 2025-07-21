@@ -14,7 +14,7 @@ class NormalTextFieldWidget extends StatefulWidget {
 
 class NormalTextFieldState extends State<NormalTextFieldWidget> {
   // 사용자가 나중에 입력한 값을 저장하는 인스턴스 변수
-  late String _text;
+  late String _text = '';
 
   // state 의 값을 변경해주는 기능을 구현하면
   // 사용자가 입력창에 입력한 값을 실제로 화면에 띄워볼수도 있겠구나!
@@ -51,17 +51,5 @@ class NormalTextFieldState extends State<NormalTextFieldWidget> {
         ),
       ),
     );
-    // TextField(
-    //   decoration: InputDecoration(
-    //     label: Text("이름을 입력하세요"),
-    //     border: UnderlineInputBorder(),
-    //   ),
-    //   //onchanged 기능을 이용하면 사용자가 입력창의 내용을 바꿀 때 마다
-    //   //안에 있는 함수가 실행이 되는구나.
-    //   onChanged: (value) {
-    //     changeText(value);
-
-    //   },
-    // )
   }
 }
