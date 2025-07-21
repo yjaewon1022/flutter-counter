@@ -54,6 +54,7 @@ class PasswordTextFieldState extends State<PasswordTextFieldWidget> {
             ),
             TextField(
               obscureText: true,
+              // test
               decoration: InputDecoration(
                 labelText: '숫자를 입력하세요',
                 border: OutlineInputBorder(),
