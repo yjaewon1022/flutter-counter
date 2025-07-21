@@ -12,11 +12,10 @@ import 'package:flutter/material.dart';
 // import 'book.dart';
 // import 'gugudan.dart';
 // import 'star.dart';
-import 'color-select.dart';
 // import 'hello.dart';
 import 'textfield/normal.dart';
-import 'textfield/number.dart';
 import 'textfield/password.dart';
+import 'note.dart';
 
 void main() => runApp(MyApp());
 
@@ -53,6 +52,8 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
     NormalTextFieldWidget(),
     NumberTextFieldWidget(),
     PasswordTextFieldWidget(),
+    // MultiLineTextFieldWidget(),
+    ProfileTextFieldWidget(),
   ];
 
   final PageController _pageController = PageController();
@@ -100,6 +101,10 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
           BottomNavigationBarItem(
             icon: Icon(Icons.numbers_rounded),
             label: '비밀번호',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.numbers_rounded),
+            label: '자기소개',
           ),
         ],
         currentIndex: _selectedIndex,
