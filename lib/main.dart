@@ -12,6 +12,7 @@ import 'book.dart';
 import 'gugudan.dart';
 import 'star.dart';
 import 'color-select.dart';
+import 'hello.dart';
 
 void main() => runApp(MyApp());
 
@@ -79,6 +80,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.wb_cloudy), label: 'Hello'),
           BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Star'),
+          BottomNavigationBarItem(icon: Icon(Icons.handshake), label: 'Dialog'),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.white,
