@@ -33,13 +33,9 @@ class Star extends StatelessWidget {
       info['titleSectionScore'],
     );
 
-    return MaterialApp(
-      title: info['appTitle'],
-      home: Scaffold(
-        appBar: AppBar(title: Text(info['appBarTitle'])),
-        body: ListView(
-          children: [titleImage, titleSection, buttonSection, textSection],
-        ),
+    return Scaffold(
+      body: ListView(
+        children: [titleImage, titleSection, buttonSection, textSection],
       ),
     );
   }

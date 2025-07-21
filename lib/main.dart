@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'book.dart';
 import 'gugudan.dart';
 import 'star.dart';
-import 'quiz.dart';
+import 'colors.dart';
+import 'hello.dart';
 
 void main() => runApp(MyApp());
 
@@ -71,6 +72,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
           BottomNavigationBarItem(icon: Icon(Icons.wb_cloudy), label: 'Hello'),
           BottomNavigationBarItem(icon: Icon(Icons.star), label: 'star'),
           BottomNavigationBarItem(icon: Icon(Icons.plus_one), label: 'color'),
+          BottomNavigationBarItem(icon: Icon(Icons.handshake), label: 'Hello'),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.white,

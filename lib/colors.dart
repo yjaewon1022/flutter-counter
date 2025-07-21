@@ -49,7 +49,6 @@ class ColorSelect extends StatelessWidget {
           ),
         ],
       ),
-      ElevatedButton. ( onPressed: () ),
     );
   }
 }
