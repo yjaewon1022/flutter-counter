@@ -11,6 +11,7 @@ import './gugudan.dart';
 import './star.dart';
 import './palette.dart';
 import './hello.dart';
+import './textfield/normal.dart';
 
 void main() => runApp(MyApp());
 
@@ -45,11 +46,12 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
   //리스트형 위젯을 반환한다??
   // <widget>[] : 안에 있는게 위젯인 리스트다.
   static final List<Widget> _WidgetOptions = <Widget>[
-    Book(),
-    Gugudan(),
-    Star(),
-    Palette(),
+    // Book(),
+    // Gugudan(),
+    // Star(),
+    // Palette(),
     HelloWidget(),
+    NormalTextFieldWidget(),
   ];
 
   // 사용자가 터치함에 따라 인덱스를 바꿔서 화면전환
@@ -80,21 +82,26 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
             bottomNavigationBar: BottomNavigationBar(
               type: BottomNavigationBarType.fixed,
               items: const <BottomNavigationBarItem>[
-                BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.wb_cloudy),
-                  label: 'Gugudan',
-                ),
-                BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Star'),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.palette),
-                  label: 'Color',
-                ),
+                //   BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+                //   BottomNavigationBarItem(
+                //     icon: Icon(Icons.wb_cloudy),
+                //     label: 'Gugudan',
+                //   ),
+                //   BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Star'),
+                //   BottomNavigationBarItem(
+                //     icon: Icon(Icons.palette),
+                //     label: 'Color',
+                //   ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.touch_app),
                   label: 'Dialog',
                 ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.text_fields),
+                  label: "기본입력창",
+                ),
               ],
+
               currentIndex: _selectedIndex,
               selectedItemColor: Colors.white,
               backgroundColor: Colors.blueAccent,
