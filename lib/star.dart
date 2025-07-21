@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -65,7 +63,7 @@ Container _buildTitleSection(String name, String addr, int count) {
             ],
           ),
         ),
-        Counter(),
+        const Counter(),
       ],
     ),
   );
@@ -86,7 +84,11 @@ Column _buildButtonColumn(Color color, IconData icon, String label) {
   return Column(
     mainAxisSize: MainAxisSize.min,
     mainAxisAlignment: MainAxisAlignment.center,
-    children: [ColorChanger(color: color, icon: icon, labal: label)],
+    children: [
+      // Todo: StatefulWidget 으로 변경해서 한 번 누르면 주황색, 다시 누르면 원색으로
+      // 돌아가는 기능을 만들어보자!
+      ColorChanger(color: color, icon: icon, label: label),
+    ],
   );
 }
 
@@ -100,6 +102,90 @@ Container _buildTextSection(String section) {
       style: const TextStyle(height: 1.5, fontSize: 15),
     ),
   );
+}
+
+class ColorChanger extends StatefulWidget {
+  // 생성자 (얘가 어떤 역할 하는지 key 로 구분하는 용도.)
+  ColorChanger({
+    super.key,
+    required Color color,
+    required IconData icon,
+    required String label,
+  }) {
+    inputColor = color;
+    inputIcon = icon;
+    inputLabel = label;
+  }
+
+  // 인스턴스 변수
+  late Color inputColor;
+  late IconData inputIcon;
+  late String inputLabel;
+
+  @override
+  State<ColorChanger> createState() =>
+      ColorState(color: inputColor, icon: inputIcon, label: inputLabel);
+}
+
+class ColorState extends State<ColorChanger> {
+  ColorState({
+    required Color color,
+    required IconData icon,
+    required String label,
+  }) {
+    _statusColor = color;
+    _icon = icon;
+    _label = label;
+  }
+
+  // 사용자가 이 아이콘을 눌렀는지에 대한 상태를 저장하는 변수
+  bool _boolStatus = false;
+  // 현재 상태에 따른 변경될 아이콘의 색 에 대한 상태를 저장하는 변수
+  late Color _statusColor;
+  late IconData _icon;
+  late String _label;
+
+  // 실제로 State 에 저장된 상태를 변경해줄 수 있는 함수
+  // = 사용자가 아이콘 버튼을 눌렀을 때 동작할 함수
+  void _buttonPressed() {
+    // State를 변경하는 코드 작성 -> setState() 함수로 값 변경 가능
+    setState(() {
+      // 사용자가 이미 버튼을 누른 경우
+      if (_boolStatus == true) {
+        _boolStatus = false;
+        _statusColor = Colors.deepPurpleAccent;
+      } else {
+        // 사용자가 아직 버튼을 안누른 상태에서 눌렀을 때에 대한 경우
+        _boolStatus = true;
+        _statusColor = Colors.orange;
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        IconButton(
+          onPressed: _buttonPressed,
+          icon: Icon(_icon),
+          color: _statusColor,
+        ),
+        // Icon(_icon, color: _statusColor),
+        Container(
+          margin: const EdgeInsets.only(top: 8),
+          child: Text(
+            _label,
+            style: TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.w400,
+              color: _statusColor,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 }
 
 class Counter extends StatefulWidget {
@@ -123,7 +209,7 @@ class CounterState extends State<Counter> {
       } else {
         _boolStatus = true;
         _counter++;
-        _statusColor == Colors.red;
+        _statusColor = Colors.red;
       }
     });
   }
@@ -137,85 +223,7 @@ class CounterState extends State<Counter> {
           color: _statusColor,
           onPressed: _buttonPressed,
         ),
-      ],
-    );
-  }
-}
-
-class ColorChanger extends StatefulWidget {
-  ColorChanger({
-    super.key,
-    required Color color,
-    required IconData icon,
-    required String labal,
-  }) {
-    inputcolor = color;
-    inputicon = icon;
-    inputlabel = labal;
-  }
-
-  late Color inputcolor;
-  late IconData inputicon;
-  late String inputlabel;
-
-  @override
-  State<ColorChanger> createState() =>
-      ChangeClass(color: inputcolor, icon: inputicon, label: inputlabel);
-}
-
-class ChangeClass extends State<ColorChanger> {
-  ChangeClass({
-    required Color color,
-    required String label,
-    required IconData icon,
-  }) {
-    _StatusColor = color;
-    _label = label;
-    _icon = icon;
-  }
-
-  //시용자가 이 아이콘을 눌렀는지에 대한 상태를 저장하는 변수
-  bool _boolStatus = false;
-  //현재 상태에 따른 변경된 아이콘의 색에 대한 상태룰 저장하는 변수
-  Color _StatusColor = Colors.pink;
-  late String _label;
-  late IconData _icon;
-
-  //실제로 status에 저장된 상채를 변경해 줄 수 있는 함수
-  //=사용자가 아이콘 버튼을 눌렀을 떼 동작할 함수
-  void _buttonPressed() {
-    // setState(() {})
-    setState(() {
-      if (_boolStatus == true) {
-        _boolStatus = false;
-        _StatusColor = Colors.black;
-      } else {
-        _boolStatus = true;
-        _StatusColor = Colors.orange;
-      }
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        IconButton(
-          onPressed: _buttonPressed,
-          icon: Icon(_icon),
-          color: _StatusColor,
-        ),
-        Container(
-          margin: const EdgeInsets.only(top: 8),
-          child: Text(
-            _label,
-            style: TextStyle(
-              fontSize: 13,
-              fontWeight: FontWeight.w400,
-              color: _StatusColor,
-            ),
-          ),
-        ),
+        Text("$_counter"),
       ],
     );
   }

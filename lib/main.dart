@@ -25,21 +25,21 @@ class MyStatefulWidget extends StatefulWidget {
 }
 
 class MyStatefulWidgetState extends State<MyStatefulWidget> {
-  final List<Widget> _widgetOptions = <Widget>[
-    Book(),
-    Gugudan(),
-    Star(),
-    ColorSelect(),
-  ];
-
-  final PageController _pageController = PageController();
-
   int _selectedIndex = 0;
 
   static const TextStyle optionStyle = TextStyle(
     fontSize: 30,
     fontWeight: FontWeight.bold,
   );
+
+  final List<Widget> _widgetOptions = <Widget>[
+    ColorSelect(),
+    Book(),
+    Gugudan(),
+    Star(),
+  ];
+
+  final PageController _pageController = PageController();
 
   void _onItemTapped(int index) {
     setState(() {
@@ -54,9 +54,9 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
   }
 
   @override
-  Widget build(BuildContext contaxt) {
+  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Flutter Sketch Application')),
+      appBar: AppBar(title: const Text('Flutter 예제')),
       body: PageView(
         controller: _pageController,
         children: <Widget>[
@@ -68,11 +68,10 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.color_lens), label: 'Color'),
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.wb_cloudy), label: 'Hello'),
-          BottomNavigationBarItem(icon: Icon(Icons.star), label: 'star'),
-          BottomNavigationBarItem(icon: Icon(Icons.plus_one), label: 'color'),
-          BottomNavigationBarItem(icon: Icon(Icons.handshake), label: 'Hello'),
+          BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Star'),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.white,
