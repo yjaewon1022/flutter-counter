@@ -8,6 +8,7 @@
 // 좌우 여백과 상하 여백이 존재하게 만들어보세요.
 
 import 'package:counter/note.dart';
+import 'package:counter/textfield/button-input.dart';
 import 'package:flutter/material.dart';
 // import 'book.dart';
 // import 'gugudan.dart';
@@ -58,6 +59,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
     // MultiLineTextFieldWidget(),
     // MaxLengthTextFieldWidget(),
     NoteWidget(),
+    ButtonInputTextFieldWidget(),
   ];
 
   final PageController _pageController = PageController();
@@ -111,6 +113,10 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
                 BottomNavigationBarItem(
                   icon: Icon(Icons.note_add),
                   label: "자소서 작성",
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.calculate),
+                  label: "버튼입력창",
                 ),
               ],
               currentIndex: _selectedIndex,
