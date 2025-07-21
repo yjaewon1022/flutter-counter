@@ -10,14 +10,7 @@ class HelloWidget extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: TextButton(
-<<<<<<< HEAD
-          style: TextButton.styleFrom(
-            foregroundColor: Colors.black,
-            textStyle: const TextStyle(fontSize: 32),
-          ),
-=======
           style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 32)),
->>>>>>> 5ad9fdb84176d6c4238a466b8e3e3b21ffcaafa1
           onPressed: () {
             showAlertDialog(context);
           },
@@ -35,27 +28,16 @@ void showAlertDialog(BuildContext context) async {
     builder: (BuildContext context) {
       return AlertDialog(
         title: const Text('AlertDialog Sample'),
-<<<<<<< HEAD
-        content: const Text("Select button you want"),
-        actions: <Widget>[
-          TextButton(
-            child: const Text('OK'),
-=======
         content: const Text('Select button you want'),
         actions: <Widget>[
           TextButton(
             child: Text("OK"),
->>>>>>> 5ad9fdb84176d6c4238a466b8e3e3b21ffcaafa1
             onPressed: () {
               Navigator.pop(context, "OK");
             },
           ),
           TextButton(
-<<<<<<< HEAD
-            child: const Text('Cancel'),
-=======
             child: Text("Cancel"),
->>>>>>> 5ad9fdb84176d6c4238a466b8e3e3b21ffcaafa1
             onPressed: () {
               Navigator.pop(context, "Cancel");
             },
@@ -64,9 +46,6 @@ void showAlertDialog(BuildContext context) async {
       );
     },
   );
-<<<<<<< HEAD
-=======
 
   print('showAlertDialog(): $result');
->>>>>>> 5ad9fdb84176d6c4238a466b8e3e3b21ffcaafa1
 }

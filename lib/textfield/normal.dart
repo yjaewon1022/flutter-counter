@@ -4,27 +4,6 @@ void main() {
   return runApp(NormalTextFieldWidget());
 }
 
-<<<<<<< HEAD
-// StatelessWidget and StatefullWidget
-// 앱에서 실시간으로 사용자가 입력한 값을 가져와서 화면에 띄워줘야 하기 때문에
-// StatefulWidget을 사용
-class NormalTextFieldWidget extends StatefulWidget {
-  @override
-  State<NormalTextFieldWidget> createState() => NormalTextFieldState();
-}
-
-class NormalTextFieldState extends State<NormalTextFieldWidget> {
-  // 사용자가 나중에 입력한 값을 저장하는 인스턴스 변수
-  late String _text = '';
-
-  // state 의 값을 변경해주는 기능을 구현하면
-  // 사용자가 입력창에 입력한 값을 실제로 화면에 띄워볼수도 있겠구나!
-  // state 의 값을 변경해주는 기능을 변경하는 함수가 무엇?
-  // seState((){});
-  void changeText(String value) {
-    setState(() {
-      //_text 인스턴스 변수 안에 값을 넣어야겠다.
-=======
 // StatelessWidget 과 StatefulWidget 중 어느 것을 써야할까?
 // 앱에서 실시간으로 사용자가 입력한 값을 가져와서 화면에 띄워줘야 하기 때문에
 // StatefulWidget을 사용해야 합니다.
@@ -44,19 +23,14 @@ class NormalTextFieldState extends State<NormalTextFieldWidget> {
   void changeText(String value) {
     setState(() {
       // _text 인스턴스변수 안에 값을 넣어야겠다!
->>>>>>> 5ad9fdb84176d6c4238a466b8e3e3b21ffcaafa1
       _text = value;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
-    //Scaffold= 기본적으로 앱에서 보여질 디자인 하면 틀
-=======
     // Scaffold 가 무엇인가?
     // 기본적으로 앱에서 보여질 디자인 화면 틀 이라고 생각하시면 됩니다.
->>>>>>> 5ad9fdb84176d6c4238a466b8e3e3b21ffcaafa1
     return Scaffold(
       body: Container(
         padding: EdgeInsets.all(10),
@@ -64,19 +38,11 @@ class NormalTextFieldState extends State<NormalTextFieldWidget> {
           children: [
             TextField(
               decoration: InputDecoration(
-<<<<<<< HEAD
-                label: Text("이름을 입력하세요"),
-                border: UnderlineInputBorder(),
-              ),
-              //onchanged 기능을 이용하면 사용자가 입력창의 내용을 바꿀 때 마다
-              //안에 있는 함수가 실행이 되는구나.
-=======
                 labelText: '이름을 입력하세요',
                 border: OutlineInputBorder(),
               ),
               // onChanged 기능을 이용하면 사용자가 입력창의 내용을 바꿀 때 마다
               // 안에 있는 함수가 실행이 되는구나!
->>>>>>> 5ad9fdb84176d6c4238a466b8e3e3b21ffcaafa1
               onChanged: (value) {
                 changeText(value);
               },
