@@ -9,11 +9,15 @@
 
 import 'package:counter/textfield/number.dart';
 import 'package:flutter/material.dart';
-import 'book.dart';
-import 'gugudan.dart';
-import 'star.dart';
+// import 'book.dart';
+// import 'gugudan.dart';
+// import 'star.dart';
 import 'color-select.dart';
+<<<<<<< HEAD
 import 'hello.dart';
+=======
+// import 'hello.dart';
+>>>>>>> 5ad9fdb84176d6c4238a466b8e3e3b21ffcaafa1
 import 'textfield/normal.dart';
 import 'textfield/number.dart';
 
@@ -44,7 +48,11 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
   );
 
   final List<Widget> _widgetOptions = <Widget>[
+<<<<<<< HEAD
     ColorSelect(),
+=======
+    // ColorSelect(),
+>>>>>>> 5ad9fdb84176d6c4238a466b8e3e3b21ffcaafa1
     // Book(),
     // Gugudan(),
     // Star(),
@@ -82,6 +90,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
+<<<<<<< HEAD
           BottomNavigationBarItem(icon: Icon(Icons.color_lens), label: 'Color'),
           // BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           // BottomNavigationBarItem(icon: Icon(Icons.wb_cloudy), label: 'Hello'),
@@ -92,6 +101,21 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
             label: "기본입력창",
           ),
           BottomNavigationBarItem(icon: Icon(Icons.text_fields), label: "예제"),
+=======
+          // BottomNavigationBarItem(icon: Icon(Icons.color_lens), label: 'Color'),
+          // BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          // BottomNavigationBarItem(icon: Icon(Icons.wb_cloudy), label: 'Hello'),
+          // BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Star'),
+          // BottomNavigationBarItem(icon: Icon(Icons.handshake), label: 'Dialog'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.text_fields),
+            label: "기본 입력창",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.numbers_rounded),
+            label: '숫자 입력창',
+          ),
+>>>>>>> 5ad9fdb84176d6c4238a466b8e3e3b21ffcaafa1
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.white,

@@ -66,6 +66,10 @@ class Gugudan extends StatelessWidget {
               children: [
                 TextButton(
                   onPressed: () {
+<<<<<<< HEAD
+=======
+                    // 함수에게 우리가 가지고 있는 정보를 전달하는 방법
+>>>>>>> 5ad9fdb84176d6c4238a466b8e3e3b21ffcaafa1
                     showAlertDialog(context, gugudan1, "1단");
                   },
                   child: Text("1단"),
@@ -91,19 +95,32 @@ class Gugudan extends StatelessWidget {
               children: [
                 TextButton(
                   onPressed: () {
+<<<<<<< HEAD
                     showAlertDialog(context, gugudan4, "4단");
+=======
+                    // 함수에게 우리가 가지고 있는 정보를 전달하는 방법
+                    showAlertDialog(context, gugudan4, "4");
+>>>>>>> 5ad9fdb84176d6c4238a466b8e3e3b21ffcaafa1
                   },
                   child: Text("4단"),
                 ),
                 TextButton(
                   onPressed: () {
+<<<<<<< HEAD
                     showAlertDialog(context, gugudan5, "5단");
+=======
+                    showAlertDialog(context, gugudan5, "5");
+>>>>>>> 5ad9fdb84176d6c4238a466b8e3e3b21ffcaafa1
                   },
                   child: Text("5단"),
                 ),
                 TextButton(
                   onPressed: () {
+<<<<<<< HEAD
                     showAlertDialog(context, gugudan6, "6단");
+=======
+                    showAlertDialog(context, gugudan6, "6");
+>>>>>>> 5ad9fdb84176d6c4238a466b8e3e3b21ffcaafa1
                   },
                   child: Text("6단"),
                 ),
@@ -116,19 +133,32 @@ class Gugudan extends StatelessWidget {
               children: [
                 TextButton(
                   onPressed: () {
+<<<<<<< HEAD
                     showAlertDialog(context, gugudan7, "7단");
+=======
+                    // 함수에게 우리가 가지고 있는 정보를 전달하는 방법
+                    showAlertDialog(context, gugudan7, "7");
+>>>>>>> 5ad9fdb84176d6c4238a466b8e3e3b21ffcaafa1
                   },
                   child: Text("7단"),
                 ),
                 TextButton(
                   onPressed: () {
+<<<<<<< HEAD
                     showAlertDialog(context, gugudan8, "8단");
+=======
+                    showAlertDialog(context, gugudan8, "8");
+>>>>>>> 5ad9fdb84176d6c4238a466b8e3e3b21ffcaafa1
                   },
                   child: Text("8단"),
                 ),
                 TextButton(
                   onPressed: () {
+<<<<<<< HEAD
                     showAlertDialog(context, gugudan9, "9단");
+=======
+                    showAlertDialog(context, gugudan9, "9");
+>>>>>>> 5ad9fdb84176d6c4238a466b8e3e3b21ffcaafa1
                   },
                   child: Text("9단"),
                 ),
@@ -140,12 +170,23 @@ class Gugudan extends StatelessWidget {
     );
   }
 }
+<<<<<<< HEAD
 //우리가 현재 가지고 있는 값을 함수에게 전달하는 방법
 // 가지고 있는 값-> name
 // 가지고 있는 함수 -> void hello(){}
 // 함수의 소괄호 부분에 우리가 가지고 있는 값을 전달해 줄 수 있는 변수를 작성한다.
 // ex) void hello(String name){}
 // hello 라는 함수에서 name 이라는 변수를 받아서 사용하겠다.
+=======
+
+// 우리가 현재 가지고 있는 값을 함수에게 전달하는 방법
+// 가지고 있는 값 -> name
+// 가지고 있는 함수 -> void hello() {}
+// 함수의 소괄호 부분에 우리가 가지고 있는 값을 전달해 줄 수 있는 변수를 작성한다
+// ex) void hello(String name) {}
+// 이 코드는 다음과 같이 해석할 수 있다.
+// hello 라는 함수에서는 name 이라는 변수를 받아서 사용하겠다.
+>>>>>>> 5ad9fdb84176d6c4238a466b8e3e3b21ffcaafa1
 
 void showAlertDialog(BuildContext context, String gugudan, String title) async {
   String result = await showDialog(
@@ -157,13 +198,21 @@ void showAlertDialog(BuildContext context, String gugudan, String title) async {
         content: Text(gugudan),
         actions: <Widget>[
           TextButton(
+<<<<<<< HEAD
             child: const Text('OK'),
+=======
+            child: Text("OK"),
+>>>>>>> 5ad9fdb84176d6c4238a466b8e3e3b21ffcaafa1
             onPressed: () {
               Navigator.pop(context, "OK");
             },
           ),
           TextButton(
+<<<<<<< HEAD
             child: const Text('Cancel'),
+=======
+            child: Text("Cancel"),
+>>>>>>> 5ad9fdb84176d6c4238a466b8e3e3b21ffcaafa1
             onPressed: () {
               Navigator.pop(context, "Cancel");
             },
@@ -172,4 +221,9 @@ void showAlertDialog(BuildContext context, String gugudan, String title) async {
       );
     },
   );
+<<<<<<< HEAD
+=======
+
+  print('showAlertDialog(): $result');
+>>>>>>> 5ad9fdb84176d6c4238a466b8e3e3b21ffcaafa1
 }
