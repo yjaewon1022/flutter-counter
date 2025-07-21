@@ -20,8 +20,9 @@ class PasswordTextFieldState extends State<PasswordTextFieldWidget> {
     // _cannotSeePassword 라는 변수에 기존에 있던 _cannotSeePassword 변수의 값을
     // 반전시켜서 넣겠다.
     // ! -> 비교연산자로서, 값을 반대로 변경하는 방법. 교재 79p
-    _cannotSeePassword = !_cannotSeePassword;
-    print(_cannotSeePassword);
+    setState(() {
+      _cannotSeePassword = !_cannotSeePassword;
+    });
   }
 
   void changeText(String value) {
