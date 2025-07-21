@@ -19,6 +19,8 @@ import './textfield/password.dart';
 import './textfield/multiLine.dart';
 import './textfield/maxlength.dart';
 import 'note.dart';
+import './textfield/button-input.dart';
+import 'day11quiz.dart';
 
 void main() => runApp(MyApp());
 
@@ -58,13 +60,15 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
     // Star(),
     // Palette(),
     // HelloWidget(),
-    // NormalTextFieldWidget(),
+    NormalTextFieldWidget(),
     // NumberTextField(),
     // Calculation(),
     // PasswordTextFieldWidget(),
-    MultiLIneTextFieldWidget(),
-    MaxLengthTextFieldWidget(),
+    // MultiLIneTextFieldWidget(),
+    // MaxLengthTextFieldWidget(),
     NoteWidget(),
+    ButtonInputTextFieldWidget(),
+    Calcul(),
   ];
 
   // 사용자가 터치함에 따라 인덱스를 바꿔서 화면전환
@@ -110,10 +114,10 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
                 //   icon: Icon(Icons.touch_app),
                 //   label: 'Dialog',
                 // ),
-                // BottomNavigationBarItem(
-                //   icon: Icon(Icons.text_fields),
-                //   label: "기본입력창",
-                // ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.text_fields),
+                  label: "기본입력창",
+                ),
                 //-------------------------------------------
                 // BottomNavigationBarItem(
                 //   icon: Icon(Icons.numbers_rounded),
@@ -127,17 +131,26 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
                 //   icon: Icon(Icons.security),
                 //   label: "비밀번호",
                 // ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.multiline_chart),
-                  label: "다중줄 입력창",
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.monitor_heart),
-                  label: "max length",
-                ),
+                //-------------------------------------------
+                // BottomNavigationBarItem(
+                //   icon: Icon(Icons.multiline_chart),
+                //   label: "다중줄 입력창",
+                // ),
+                // BottomNavigationBarItem(
+                //   icon: Icon(Icons.monitor_heart),
+                //   label: "max length",
+                // ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.perm_identity),
                   label: "자기소개서",
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.perm_identity),
+                  label: "숫자버튼",
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.calculate_outlined),
+                  label: "진짜 계산기",
                 ),
               ],
 

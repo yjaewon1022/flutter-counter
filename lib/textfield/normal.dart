@@ -1,6 +1,7 @@
 // testfield 사용해보기
 
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart';
 
 void main() {
   return runApp(NormalTextFieldWidget());
@@ -18,6 +19,7 @@ class NormalTextFieldState extends State<NormalTextFieldWidget> {
 
   //값받을 변수 선언
   late String _text = "";
+  late String _text2 = "";
 
   void changeText(String value) {
     setState(() {
@@ -25,6 +27,10 @@ class NormalTextFieldState extends State<NormalTextFieldWidget> {
       _text = value;
     });
   }
+
+  // 컨트롤러로 값 한번에 받기 -----------------------
+  // (실시간으로 받으면 데이터 손실이다.)
+  var controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +42,8 @@ class NormalTextFieldState extends State<NormalTextFieldWidget> {
         child: ListView(
           children: [
             TextField(
+              //컨트롤러 사용
+              controller: controller,
               //데코레이션으로 꾸림
               decoration: InputDecoration(
                 labelText: "이름을 입력하세요.",
@@ -44,12 +52,22 @@ class NormalTextFieldState extends State<NormalTextFieldWidget> {
               ),
               // onchanged : 입력값이 수정될때마다 가져올 수 있음
               onChanged: (value) {
-                // print(value);
+                print(value);
                 changeText(value);
               },
             ),
             // 텍스트필드 하단에 출력해줘--------------
-            Text(_text),
+            Text("setState로 실시간 값 받기 : $_text"),
+            //버튼 누르면 값을 넣어줘
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  _text2 = controller.text;
+                });
+              },
+              child: Text("제출"),
+            ),
+            Text("컨트롤러 사용 :  $_text2"),
           ],
         ),
       ),
