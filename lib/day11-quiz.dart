@@ -6,3 +6,139 @@
 // 이후에 숫자를 계속해서 입력받다가, 마지막으로 = 을 입력 받게 될 경우
 // 기존에 입력했었던 + - * / 연산자 중 선택된 연산자를 통한 계산을 실행하면 됩니다.
 // = 을 입력하면 기존에 있던 텍스트들은 사라지고, 결과가 입력창에 나와야 합니다.
+import 'package:flutter/material.dart';
+
+void main() {
+  return runApp(CalculatorWidget());
+}
+
+class CalculatorWidget extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => CalculatorState();
+}
+
+class CalculatorState extends State<CalculatorWidget> {
+  var controller = TextEditingController();
+
+  void changeText(String value) {
+    setState(() {
+      // 숫자 지우기
+      if (controller.text.isNotEmpty && value == "") {
+        controller.text = controller.text.substring(
+          0,
+          controller.text.length - 1,
+        );
+      } else {
+        controller.text += value;
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        padding: EdgeInsets.all(10),
+        child: ListView(
+          children: [
+            TextField(
+              controller: controller,
+              decoration: InputDecoration(
+                labelText: '숫자 입력기',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () => changeText("7"),
+                      child: Text("7"),
+                    ),
+                    ElevatedButton(
+                      onPressed: () => changeText("8"),
+                      child: Text("8"),
+                    ),
+                    ElevatedButton(
+                      onPressed: () => changeText("9"),
+                      child: Text("9"),
+                    ),
+                    ElevatedButton(
+                      onPressed: () => changeText(""),
+                      child: Text("지우기"),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () => changeText("4"),
+                      child: Text("4"),
+                    ),
+                    ElevatedButton(
+                      onPressed: () => changeText("5"),
+                      child: Text("5"),
+                    ),
+                    ElevatedButton(
+                      onPressed: () => changeText("6"),
+                      child: Text("6"),
+                    ),
+                    ElevatedButton(
+                      onPressed: () => changeText("+"),
+                      child: Text("+"),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () => changeText("1"),
+                      child: Text("1"),
+                    ),
+                    ElevatedButton(
+                      onPressed: () => changeText("2"),
+                      child: Text("2"),
+                    ),
+                    ElevatedButton(
+                      onPressed: () => changeText("3"),
+                      child: Text("3"),
+                    ),
+                    ElevatedButton(
+                      onPressed: () => changeText("-"),
+                      child: Text("-"),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () => changeText("0"),
+                      child: Text("0"),
+                    ),
+                    ElevatedButton(
+                      onPressed: () => changeText("+"),
+                      child: Text("+"),
+                    ),
+                    ElevatedButton(
+                      onPressed: () => changeText("*"),
+                      child: Text("*"),
+                    ),
+                    ElevatedButton(
+                      onPressed: () => changeText("="),
+                      child: Text("="),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

@@ -20,6 +20,7 @@ import 'textfield/normal.dart';
 // import 'textfield/password.dart';
 // import 'textfield/multiline.dart';
 // import 'textfield/maxlength.dart';
+import 'day11-quiz.dart';
 
 void main() => runApp(MyApp());
 
@@ -59,7 +60,8 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
     // MultiLineTextFieldWidget(),
     // MaxLengthTextFieldWidget(),
     NoteWidget(),
-    ButtonInputTextFieldWidget(),
+    // ButtonInputTextFieldWidget(),
+    CalculatorWidget(),
   ];
 
   final PageController _pageController = PageController();
@@ -116,7 +118,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.calculate),
-                  label: "버튼입력창",
+                  label: "계산기",
                 ),
               ],
               currentIndex: _selectedIndex,
