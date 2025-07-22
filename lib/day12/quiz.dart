@@ -152,10 +152,10 @@ class QuizWidgetState extends State<QuizWidget> {
             ),
             ElevatedButton(
               onPressed: () {
-                print('name')
+                print('name');
                 //모든 필수값에 값이 하나라도 없으면 예약이 되면 안 됨.
 
-                showAboutDialog(context, name);
+                // showAboutDialog(context, name);
                 //알림창 띄워주기
                 setState(() {
                   controller.text;
@@ -189,8 +189,8 @@ void showCannotWakeReservatinDialog(BuildContext context) async {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: Text(),
-        content: Text(),
+        title: Text(''),
+        content: Text(''),
         actions: <Widget>[
           TextButton(
             child: Text("OK"),
