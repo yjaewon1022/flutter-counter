@@ -6,6 +6,7 @@ import 'package:counter/day12/input/slider.dart';
 import 'package:flutter/material.dart';
 import 'day12/input/switch.dart';
 import 'day12/input/checkbox.dart';
+import 'day12/button/elevated-button.dart';
 
 void main() => runApp(MyApp());
 
@@ -34,7 +35,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
   );
 
   final List<Widget> _widgetOptions = <Widget>[
-    DatePickerWidget(),
+    ElevatedButtonWidget(),
     CheckBoxWidget(),
     RadioWidget(),
     SliderWidget(),
@@ -70,7 +71,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
               items: const <BottomNavigationBarItem>[
                 BottomNavigationBarItem(
                   icon: Icon(Icons.calculate),
-                  label: "데이트",
+                  label: "버튼",
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.calculate),
