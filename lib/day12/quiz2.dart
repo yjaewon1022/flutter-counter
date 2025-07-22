@@ -34,7 +34,6 @@ class ColorButtonWidgetState extends State<ColorButtonWidget> {
                     onPressed: () {
                       print('버튼 클릭됨!');
                     },
-
                     child: Text('빨강'),
                   ),
                 ),
