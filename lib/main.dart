@@ -7,20 +7,20 @@
 // 에 해당하는 박스(Container)를 100 x 100 픽셀의 크기로 만들되,
 // 좌우 여백과 상하 여백이 존재하게 만들어보세요.
 
-import 'package:counter/note.dart';
-import 'package:counter/textfield/button-input.dart';
+import 'package:counter/day9/note.dart';
+import 'package:counter/day11/textfield/button-input.dart';
 import 'package:flutter/material.dart';
 // import 'book.dart';
 // import 'gugudan.dart';
 // import 'star.dart';
 // import 'color-select.dart';
 // import 'hello.dart';
-import 'textfield/normal.dart';
+import 'day11/textfield/normal.dart';
 // import 'textfield/number.dart';
 // import 'textfield/password.dart';
 // import 'textfield/multiline.dart';
 // import 'textfield/maxlength.dart';
-import 'day11-quiz.dart';
+import 'day11/day11-quiz.dart';
 
 void main() => runApp(MyApp());
 
