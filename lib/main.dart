@@ -13,14 +13,14 @@ import 'package:flutter/material.dart';
 // import 'star.dart';
 // import 'color-select.dart';
 // import 'hello.dart';
-import 'textfield/normal.dart';
+import 'day11/textfield/normal.dart';
 // import 'textfield/number.dart';
 // import 'textField/password.dart';
 // import 'textField/multiline.dart';
 // import 'textField/maxlength.dart';
-import 'note.dart';
+import 'day9/note.dart';
 // import 'textField/button-input.dart';
-import 'day11-quiz.dart';
+import 'day11/day11-quiz.dart';
 
 void main() => runApp(MyApp());
 
