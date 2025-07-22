@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 //import 'textfield/maxlength.dart';
 import 'note.dart';
 import 'textfield/buttonInput.dart';
+import 'quiz11.dart';
 
 void main() => runApp(MyApp());
 
@@ -46,11 +47,12 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
     // HelloWidget(),
     // NormalTextFieldWidget(),
     NoteWidget(),
-    ButtonInputTextFieldWidget(),
+    //ButtonInputTextFieldWidget(),
     //   NumberTextFieldWidget(),
     // PasswordTextFieldWidget(),
     //MultiLineTextFieldWidget(),
     // MaxLengthTextFieldWidget(),
+    CalculaterdWidget(),
   ];
 
   final PageController _pageController = PageController();

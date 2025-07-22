@@ -9,15 +9,15 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  return runApp(ButtonInputTextFieldWidget());
+  return runApp(CalculaterdWidget());
 }
 
-class ButtonInputTextFieldWidget extends StatefulWidget {
+class CalculaterdWidget extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => ButtonInputTextFieldState();
+  State<StatefulWidget> createState() => CalculaterdState();
 }
 
-class ButtonInputTextFieldState extends State<ButtonInputTextFieldWidget> {
+class CalculaterdState extends State<CalculaterdWidget> {
   var controller = TextEditingController();
 
   void changeText(String value) {
