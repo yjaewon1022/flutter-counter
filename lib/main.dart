@@ -1,22 +1,11 @@
-// BottomNavigationBar 에 Color 라는 이름을 가진 Item을 하나 생성하고,
-// 해당 아이템을 클릭하면
-// 화면의 AppBar 부분에 ['좋아하는 색상 고르기'] 라는 이름을 가지도록 생성하고
-// 빨 주 노
-// 초 파 남
-// 보 흰 검
-// 에 해당하는 박스(Container)를 100 x 100 픽셀의 크기로 만들되,
-// 좌우 여백과 상하 여백이 존재하게 만들어보세요.
-
-import 'package:counter/day11/textfield/button-input.dart';
-import 'package:counter/day11/textfield/number.dart';
+import 'package:counter/day12/input/date-picker.dart';
+import 'package:counter/day12/input/dropdown.dart';
+import 'package:counter/day12/input/quiz.dart';
+import 'package:counter/day12/input/radio.dart';
+import 'package:counter/day12/input/slider.dart';
 import 'package:flutter/material.dart';
-// import 'book.dart';
-// import 'gugudan.dart';
-// import 'star.dart';
-// import 'hello.dart';
-import 'day11/textfield/normal.dart';
-import 'day11/textfield/password.dart';
-import 'day9/note.dart';
+import 'day12/input/switch.dart';
+import 'day12/input/checkbox.dart';
 
 void main() => runApp(MyApp());
 
@@ -45,17 +34,12 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
   );
 
   final List<Widget> _widgetOptions = <Widget>[
-    // ColorSelect(),
-    // Book(),
-    // Gugudan(),
-    // Star(),
-    // HelloWidget(),
-    NormalTextFieldWidget(),
-    NumberTextFieldWidget(),
-    PasswordTextFieldWidget(),
-    // MultiLineTextFieldWidget(),
-    ProfileTextFieldWidget(),
-    CalculatorWidget(),
+    DatePickerWidget(),
+    CheckBoxWidget(),
+    RadioWidget(),
+    SliderWidget(),
+    DropdownButtonWidget(),
+    HotelReservationWidget(),
   ];
 
   final PageController _pageController = PageController();
@@ -75,48 +59,47 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('계산기')),
+      appBar: AppBar(title: const Text('Flutter 예제')),
       body: PageView(
         controller: _pageController,
         children: <Widget>[
           Scaffold(
             body: Center(child: _widgetOptions.elementAt(_selectedIndex)),
+            bottomNavigationBar: BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
+              items: const <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.calculate),
+                  label: "데이트",
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.calculate),
+                  label: "체크",
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.calculate),
+                  label: "라디오",
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.calculate),
+                  label: "슬라이더",
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.calculate),
+                  label: "드랍다운",
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.calculate),
+                  label: "예약",
+                ),
+              ],
+              currentIndex: _selectedIndex,
+              selectedItemColor: Colors.white,
+              backgroundColor: Colors.blueAccent,
+              onTap: _onItemTapped,
+            ),
           ),
         ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        items: const <BottomNavigationBarItem>[
-          // BottomNavigationBarItem(icon: Icon(Icons.color_lens), label: 'Color'),
-          // BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          // BottomNavigationBarItem(icon: Icon(Icons.wb_cloudy), label: 'Hello'),
-          // BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Star'),
-          // BottomNavigationBarItem(icon: Icon(Icons.handshake), label: 'Dialog'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.text_fields),
-            label: "기본 입력창",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.numbers_rounded),
-            label: '숫자 입력창',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.numbers_rounded),
-            label: '비밀번호',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.numbers_rounded),
-            label: '자기소개',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.numbers_rounded),
-            label: '버튼',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.white,
-        backgroundColor: Colors.blueAccent,
-        onTap: _onItemTapped,
       ),
     );
   }
