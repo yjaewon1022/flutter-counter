@@ -19,7 +19,8 @@ import 'textfield/normal.dart';
 // import 'textField/multiline.dart';
 // import 'textField/maxlength.dart';
 import 'note.dart';
-import 'textField/button-input.dart';
+// import 'textField/button-input.dart';
+import 'day11-quiz.dart';
 
 void main() => runApp(MyApp());
 
@@ -59,7 +60,8 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
     // MultiLineTextFieldWidget(),
     // MaxLengthTextFieldWidget(),
     NoteTextFieldWidget(),
-    ButtonInputTextFieldWidget(),
+    // ButtonInputTextFieldWidget(),
+    CalculatorWidget(),
   ];
 
   final PageController _pageController = PageController();
@@ -116,12 +118,9 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
           // ),
           BottomNavigationBarItem(
             icon: Icon(Icons.multitrack_audio_outlined),
-            label: '자기소개서 입력창',
+            label: '자소서 작성',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_box),
-            label: '버튼 입력창',
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.calculate), label: '계산기'),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.white,
