@@ -40,16 +40,26 @@ class CalculaterdState extends State<CalculaterdWidget> {
         );
       } else {
         //입력창에 사용자가 입력한 입력값을 추가
-        if(value == "+"){
-          num1 = controller.text.substring(0.controller.text.length-1);
+        if(value == "+"){ num1 = controller.text = 
+        controller.text.substring(
+          0, controller.text.length - 1,);
+          
           } else if (value == "-") {
-        num1 = controller.text.substring(0.controller.text.length-1);
+         num1 = controller.text = controller.text.substring(
+          0,
+          controller.text.length - 1,);
         } else if (value == "*") {
-       num1 = controller.text.substring(0.controller.text.length-1);
+        num1 = controller.text = controller.text.substring(
+          0,
+          controller.text.length - 1,);
         } else if (value == "/") {
-        num1 = controller.text.substring(0.controller.text.length-1);
+         num1 = controller.text = controller.text.substring(
+          0,
+          controller.text.length - 1,);
         } else if (value == "=") {
-          num1 = controller.text.substring(0.controller.text.length-1);
+           num1 = controller.text = controller.text.substring(
+          0,
+          controller.text.length - 1,);
           // 123+111=
           // + 와 = 사이에 있는 나머지 숫자를 num2에 담아라.
         }
