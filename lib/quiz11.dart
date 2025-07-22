@@ -19,19 +19,44 @@ class CalculaterdWidget extends StatefulWidget {
 
 class CalculaterdState extends State<CalculaterdWidget> {
   var controller = TextEditingController();
+  //계산기 기능을 만들 때 필요한 변수 선언
+  //1.첫번째 숫자
+  late var num1;
+  //2. 두번째 숫자
+  late var num2;
+  //3. 결과값
+  late var result;
 
   void changeText(String value) {
     setState(() {
       // 숫자 지우기
+      //만약 현재 입력창이 비어있지 않으면서, 입력값이 == 이면
+
       if (controller.text.isNotEmpty && value == "") {
+        //입력창의 내용에서 마지막 한 글자를 제거
         controller.text = controller.text.substring(
           0,
           controller.text.length - 1,
         );
       } else {
+        //입력창에 사용자가 입력한 입력값을 추가
+        if(value == "+"){
+          num1 = controller.text.substring(0.controller.text.length-1);
+          } else if (value == "-") {
+        num1 = controller.text.substring(0.controller.text.length-1);
+        } else if (value == "*") {
+       num1 = controller.text.substring(0.controller.text.length-1);
+        } else if (value == "/") {
+        num1 = controller.text.substring(0.controller.text.length-1);
+        } else if (value == "=") {
+          num1 = controller.text.substring(0.controller.text.length-1);
+          // 123+111=
+          // + 와 = 사이에 있는 나머지 숫자를 num2에 담아라.
+        }
+        }
         controller.text += value;
-      }
-    });
+      };)
+    };
   }
 
   @override
