@@ -4,6 +4,7 @@ import 'package:counter/day12/input/dropdown.dart';
 import 'package:counter/day12/input/radio.dart';
 import 'package:counter/day12/input/slider.dart';
 import 'package:counter/day12/input/switch.dart';
+import 'package:counter/day12/quiz.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -39,6 +40,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
     SliderWidget(),
     dropDownWidget(),
     DatePickerWidget(),
+    QuizWidget(),
   ];
 
   final PageController _pageController = PageController();
@@ -91,6 +93,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
                   icon: Icon(Icons.date_range),
                   label: "날짜 선택",
                 ),
+                BottomNavigationBarItem(icon: Icon(Icons.hotel), label: "예약"),
               ],
               currentIndex: _selectedIndex,
               selectedItemColor: Colors.white,
