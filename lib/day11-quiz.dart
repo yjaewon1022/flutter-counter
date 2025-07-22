@@ -19,52 +19,88 @@ class CalculatorWidget extends StatefulWidget {
 
 class CalculatorState extends State<CalculatorWidget> {
   var controller = TextEditingController();
-  // 첫 번째 수
-  var num1 = "";
-
-  // 두 번째 수
-  var num2 = "";
+  // 계산기 기능을 만들 때 필요한 변수 선언
+  // 1. 첫 번째 숫자
+  late var num1 = "";
+  // 2. 두 번째 숫자
+  late var num2 = "";
+  // 3. 결과값
+  late var result;
+  // 4. 어떤 연사자를 입력했는지 저정하는 변수
+  late var oprator;
 
   void changeText(String value) {
     setState(() {
-      // controller.text = 우리가 버튼을 통해서 입력한 모든 문자열이 들어가는 변수
-      // value = 사용자가 맨 마지막에 버튼으로 누른 값이 들어가는 변수
-
-      // 1. 사용자가 입력한 값이 하나라도 존재하고, 마지막으로 누른 버튼이 "" 값이냐?
+      // 만약 현재 입력창이 비어있지 않으면 && 입력값이 ""이면
       if (controller.text.isNotEmpty && value == "") {
-        // 만약 지울 값이 있고(입력한 값이 하나라도 존재하고), 지우기 버튼을 눌렀으면
-        // 마지막 문자를 제거해라.
+        // 입력창의 내용에서 마지막 한 글자를 제거해라.
         controller.text = controller.text.substring(
           0,
           controller.text.length - 1,
         );
       } else {
-        // 첫 번째 조건문
-        // if-else 문으로 다음의 조건을 확인
-        // + 인가? 아니면 - 인가? 아니면 * 인가? 아니면 / 인가? 아니면 = 인가?
-        if (value == "+") {
-          if (controller.text.isNotEmpty && value == "+") {
-            controller.text = controller.text.substring(
-              0,
-              controller.text.length - 1,
-            );
-          }
-          // 현재 controller.text 에는 예를들어 1234+ 라는 값이 들어갔다 라는 의미이다.
-          // 현재 controller.text 에 있는 값에서 맨 마지막에 있는 + 라는 값을 제외한
-          // 나머지 숫자를 num1 에 저장해라.
-          // 마지막에 있는 +를 제거하는 방법 = 윗부분 마지막 문자 제거하는 부분 참고
-        } else if (value == "-") {
-          //
-        } else if (value == "=") {
-          // = 이 들어가는 경우는 두 번째 숫자도 입력된 경우
-          // 기존에 있던 연산자와 = 사이의 숫자를 잘라내서 num2 에 저장해라.
-        }
-        // 만약 연산자가 들어갔다 -> + - * / 가 들어갔다 라는 뜻이니,
-        // 기존까지 입력했던 모든 문자열의 값을 num1 에 담아라.
-        // 라는 내용이 들어가야합니다.
+        // 입력창에 사용자가 입력한 입력값을 추가해라.
+        controller.text += value; // 1 + 2 =
 
-        // 사용자가 지우기버튼이 아니라 다른 버튼을 눌렀으니 해당 값을 controller.text에 추가해라.
-        controller.text += value;
+        // 사용자가 연산 기호를 입력했을 때에 대한 조건을 처리하면
+        // 실제로 첫 번째 숫자와 두 번째 숫자를 변수에 담고, 계산을 할 수 있겠다!
+        // controller.text = 입력창에 입력이 되어있는 문자열
+        // value = 사용자가 마지막으로 누른 버튼의 값
+        // 1. 첫 번째 연산자를 입력한 경우
+        if (value == "+") {
+          //  num1 에 우리가 가지고 있는 전체 문자열에서 마지막 부분을 제외한
+          // 나머지 문자열을 num1 에 넣으면 되겠다!
+          num1 = controller.text.substring(0, controller.text.length - 1);
+          oprator = "+";
+        } else if (value == "-") {
+          num1 = controller.text.substring(0, controller.text.length - 1);
+          oprator = "-";
+        } else if (value == "*") {
+          num1 = controller.text.substring(0, controller.text.length - 1);
+          oprator = "*";
+        } else if (value == "/") {
+          num1 = controller.text.substring(0, controller.text.length - 1);
+          oprator = "/";
+        } else if (value == "=") {
+          // = 이 입력되는 경우는 첫번째 수, 연산자, 두번째 수 까지 다 입력된 후
+          // list 라는 변수를 선언해서, 모든 문자열과 연산기호 들을 분리해보자
+          var list = [];
+          // 전체 문자열에서 필요한 부분끼리 분리를 해볼 예정
+          list = controller.text.split(oprator);
+
+          print(list);
+
+          // list에서 분리한 마지막 값이 사용자가 입력한 두 번째 수가 되는구나!
+          num1 = list.first;
+          num2 = list.last.substring(0, list.last.length - 1);
+
+          print("num1의 타입: ${num1.runtimeType}, num1 값: $num1");
+          print("num2의 타입: ${num2.runtimeType}, num2 값: $num2");
+
+          // 첫 번째 수와, 두 번째 수를 다 가지고 있고, 연산자도 가지고 있으니
+          // 실제로 계산해서 계산 결과를 보여주면 되겠구나!
+          // 사용자가 입력한 연산자에 따라서 + - * / 를 할 수 있도록
+          // switch-case 문을 이용하면 되겠다!
+          switch (oprator) {
+            case "+":
+              // 결과값에 실제 결과를 담아주면 되겠다.
+              result = double.parse(num1) + double.parse(num2);
+              break;
+            case "-":
+              result = double.parse(num1) - double.parse(num2);
+              break;
+            case "*":
+              result = double.parse(num1) * double.parse(num2);
+              break;
+            case "/":
+              result = double.parse(num1) / double.parse(num2);
+              break;
+            default:
+              break;
+          }
+
+          controller.text = result.toString();
+        }
       }
     });
   }
