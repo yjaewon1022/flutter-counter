@@ -19,38 +19,68 @@ class Calcul extends StatefulWidget {
 
 class CalculState extends State<Calcul> {
   var controller = TextEditingController();
-  var num1 = "";
-  var num2 = "";
-  var a = "";
+  // 숫자를 담아줄 변수 선언
+  late var num1;
+  late var num2;
+  late var result;
+  late var operator;
 
   void changeText(String value) {
+    // setState(() {})
     setState(() {
       // 숫자 지우기
+      // 입력창이 비어있지않고 + 입력값이 ""일때, 마지막글자 삭제
+
       if (controller.text.isNotEmpty && value == "") {
         controller.text = controller.text.substring(
           0,
           controller.text.length - 1,
         );
-      } else if (value == "+" || value == "-" || value == "/" || value == "*") {
-        num1 = controller.text;
-        print(num1);
-        a = value;
-        // controller.text = "";
-
-        if (controller.text.isNotEmpty && value == "") {
-          controller.text = controller.text.substring(
-            0,
-            controller.text.length - 1,
-          );
-        } else if (value == "=") {
-          num2 = controller.text;
-          print(controller.text);
-          print(num2);
-        } else {
-          // controller.text += value;
-        }
       } else {
+        //
         controller.text += value;
+
+        // 계산식 입력시 앞에 숫자를 num1에 넣기
+        if (value == "+") {
+          num1 = controller.text.substring(0, controller.text.length - 1);
+          operator = value;
+        } else if (value == "-") {
+          num1 = controller.text.substring(0, controller.text.length - 1);
+          operator = value;
+        } else if (value == "*") {
+          num1 = controller.text.substring(0, controller.text.length - 1);
+          operator = value;
+        } else if (value == "/") {
+          num1 = controller.text.substring(0, controller.text.length - 1);
+          operator = value;
+        }
+        //num2 저장
+        else if (value == "=") {
+          List list = [];
+          //기호 단위로 나눠서 리스트에 저장
+          list = controller.text.split(operator);
+          print(num1);
+          num1 = list.first;
+          num2 = list.last.substring(0, controller.text.length - 1);
+
+          switch (operator) {
+            case "+":
+              result = double.parse(num1) + double.parse(num2);
+              break;
+            case "-":
+              result = double.parse(num1) - double.parse(num2);
+              break;
+            case "*":
+              result = double.parse(num1) * double.parse(num2);
+              break;
+            case "/":
+              result = double.parse(num1) / double.parse(num2);
+              break;
+            default:
+              break;
+          }
+        }
+        controller.text += result.toString();
       }
     });
   }
