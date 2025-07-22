@@ -37,50 +37,51 @@ class CalculState extends State<Calcul> {
           controller.text.length - 1,
         );
       } else {
-        //
+        // 입력창에 사용자의입력값 넣기
         controller.text += value;
 
+        print(controller.text);
         // 계산식 입력시 앞에 숫자를 num1에 넣기
         if (value == "+") {
           num1 = controller.text.substring(0, controller.text.length - 1);
-          operator = value;
+          operator = "+";
         } else if (value == "-") {
           num1 = controller.text.substring(0, controller.text.length - 1);
-          operator = value;
+          operator = "-";
         } else if (value == "*") {
           num1 = controller.text.substring(0, controller.text.length - 1);
-          operator = value;
+          operator = "*";
         } else if (value == "/") {
           num1 = controller.text.substring(0, controller.text.length - 1);
-          operator = value;
+          operator = "/";
         }
         //num2 저장
         else if (value == "=") {
-          List list = [];
+          var list = [];
           //기호 단위로 나눠서 리스트에 저장
           list = controller.text.split(operator);
-          print(num1);
+          //print(num1);
           num1 = list.first;
-          num2 = list.last.substring(0, controller.text.length - 1);
+          num2 = list.last.substring(0, list.last.length - 1);
 
           switch (operator) {
             case "+":
-              result = double.parse(num1) + double.parse(num2);
+              result = (double.parse(num1) + double.parse(num2)).toString();
               break;
             case "-":
-              result = double.parse(num1) - double.parse(num2);
+              result = (double.parse(num1) - double.parse(num2)).toString();
               break;
             case "*":
-              result = double.parse(num1) * double.parse(num2);
+              result = (double.parse(num1) * double.parse(num2)).toString();
               break;
             case "/":
-              result = double.parse(num1) / double.parse(num2);
+              result = (double.parse(num1) / double.parse(num2)).toString();
               break;
             default:
               break;
           }
+          controller.text = result.toString();
         }
-        controller.text += result.toString();
       }
     });
   }
