@@ -1,11 +1,9 @@
-import 'package:counter/day11/day11-quiz.dart';
 import 'package:counter/day12/input/checkbox.dart';
 import 'package:counter/day12/input/date-picker.dart';
 import 'package:counter/day12/input/dropdown.dart';
 import 'package:counter/day12/input/radio.dart';
 import 'package:counter/day12/input/slider.dart';
 import 'package:counter/day12/input/switch.dart';
-import 'package:counter/day9/note.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
