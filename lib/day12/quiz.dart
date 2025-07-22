@@ -20,6 +20,7 @@
 //
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 void main() {
   return runApp(QuizWidget());
@@ -35,16 +36,15 @@ class QuizWidgetState extends State<QuizWidget> {
   // 1. 인스턴스 변수로 날짜, 시간 을 담을 수 있는 변수를 선언한다.
   DateTime? _selectedDate;
   TimeOfDay? _selectedTime;
-  //묵을 호텔방을 다음의 목록 중에서 하나를 선택해야 합니다.(스위트룸,오션뷰,시티뷰)
+  //2.묵을 호텔방을 다음의 목록 중에서 하나를 선택해야 합니다.(스위트룸,오션뷰,시티뷰)
   String? room;
-  late String _text = "";
-  var controller = TextEditingController();
 
-  void changeText(String value) {
-    setState(() {
-      _text = value;
-    });
-  }
+  //4.호텔의 옵션 중 하나인 아침식사 서비스르 키고 끌 수 있는 기능이 들어가야 합니다.
+  bool morning = false;
+
+  bool? isChecked = false;
+
+  var controller = TextEditingController();
 
   void selectDate() async {
     final DateTime? picked = await showDatePicker(
@@ -78,58 +78,134 @@ class QuizWidgetState extends State<QuizWidget> {
   Widget build(BuildContext context) {
     // 어떤 클래스를 이용해서 실제로 화면에 Text를 띄웠을까요?
     return Scaffold(
-      body: Column(
-        children: [
-          Text(_selectedDate != null ? _selectedDate.toString() : '날짜를 선택하세요'),
-          ElevatedButton(onPressed: selectDate, child: Text('날짜 선택하기')),
-          Text(
-            _selectedTime != null
-                ? _selectedTime!.format(context)
-                : '시간을 선택하세요',
-          ),
-          ElevatedButton(onPressed: selectTime, child: Text('시간 선택하기')),
-          DropdownButton(
-            items: [
-              DropdownMenuItem(value: '스위트룸', child: Text('스위트룸')),
-              DropdownMenuItem(value: '오션뷰', child: Text('오션뷰')),
-              DropdownMenuItem(value: '시티뷰', child: Text('시티뷰')),
-            ],
-            value: room,
-            onChanged: (String? newvalue) {
-              setState(() {
-                room = newvalue;
-              });
-            },
-            hint: Text('힌트'),
-          ),
-          Container(
-            padding: EdgeInsets.all(10),
-            child: ListView(
-              children: [
-                TextField(
-                  controller: controller,
-                  decoration: InputDecoration(
-                    labelText: '이름을 입력하세요',
-                    border: OutlineInputBorder(),
-                  ),
+      body: Container(
+        padding: EdgeInsets.all(20),
+        child: ListView(
+          children: [
+            Text(
+              _selectedDate != null ? _selectedDate.toString() : '날짜를 선택하세요',
+            ),
+            ElevatedButton(onPressed: selectDate, child: Text('날짜 선택하기')),
+            Text(
+              _selectedTime != null
+                  ? _selectedTime!.format(context)
+                  : '시간을 선택하세요',
+            ),
 
-                  // onChanged 기능을 이용하면 사용자가 입력창의 내용을 바꿀 때 마다
-                  // 안에 있는 함수가 실행이 되는구나!
-                ),
-                Text(_text),
-                ElevatedButton(
-                  onPressed: () {
+            ElevatedButton(onPressed: selectTime, child: Text('시간 선택하기')),
+            DropdownButton(
+              items: [
+                DropdownMenuItem(value: '스위트룸', child: Text('스위트룸')),
+                DropdownMenuItem(value: '오션뷰', child: Text('오션뷰')),
+                DropdownMenuItem(value: '시티뷰', child: Text('시티뷰')),
+              ],
+              value: room,
+              onChanged: (String? newvalue) {
+                setState(() {
+                  room = newvalue;
+                });
+              },
+              hint: Text('room'),
+            ),
+
+            TextField(
+              controller: controller,
+              decoration: InputDecoration(
+                labelText: '이름을 입력하세요',
+                border: OutlineInputBorder(),
+              ),
+
+              // onChanged 기능을 이용하면 사용자가 입력창의 내용을 바꿀 때 마다
+              // 안에 있는 함수가 실행이 되는구나!
+            ),
+            if (controller.text.isNotEmpty) Text(controller.text),
+            //이 코드 if (controller.text.isNotEmpty) Text(controller.text) 를
+            //실행하면 실제 화면에서 보이지는 않음
+            //하지만 이를 버튼이나 다른 추가 기능을 통해
+            //controller.text 를 출력하면 같이 보이게 됨.
+            Row(
+              children: [
+                Text('아침식사'),
+                Switch(
+                  value: morning,
+                  activeColor: Colors.red,
+                  onChanged: (value) {
                     setState(() {
-                      _text = controller.text;
+                      morning = value;
                     });
                   },
-                  child: Text('제출'),
                 ),
               ],
             ),
-          ),
-        ],
+            Row(
+              children: [
+                Text('이 호텔에 묵는 것을 동의합니다.'),
+                Checkbox(
+                  value: isChecked,
+                  onChanged: (bool? value) {
+                    setState(() {
+                      isChecked = value!;
+                    });
+                  },
+                ),
+              ],
+            ),
+            ElevatedButton(
+              onPressed: () {
+                print('name')
+                //모든 필수값에 값이 하나라도 없으면 예약이 되면 안 됨.
+
+                showAboutDialog(context, name);
+                //알림창 띄워주기
+                setState(() {
+                  controller.text;
+                });
+              },
+              child: Text('예약'),
+            ),
+          ],
+        ),
       ),
     );
   }
+}
+
+void showAlertDialog(BuildContext context, String name) async {
+  await showDialog(
+    context: context,
+    barrierDismissible: false,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('$name님의 호텔 예약 결과'),
+        content: Text(""),
+        actions: <Widget>[],
+      );
+    },
+  );
+}
+
+void showCannotWakeReservatinDialog(BuildContext context) async {
+  await showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text(),
+        content: Text(),
+        actions: <Widget>[
+          TextButton(
+            child: Text("OK"),
+            onPressed: () {
+              Navigator.pop(context, "OK");
+            },
+          ),
+          TextButton(
+            child: Text("Cancel"),
+            onPressed: () {
+              Navigator.pop(context, "Cancel");
+            },
+          ),
+        ],
+      );
+    },
+  );
 }

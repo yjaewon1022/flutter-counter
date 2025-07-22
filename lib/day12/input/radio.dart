@@ -14,8 +14,6 @@ class RadioWdigetState extends State<RadioWidget> {
 
   @override
   Widget build(BuildContext context) {
-    //스위치의 켜짐,꺼짐 상태를 뜻하는 인스턴스 변수
-
     return Scaffold(
       body: Column(
         children: [
