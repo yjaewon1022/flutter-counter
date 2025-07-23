@@ -1,12 +1,8 @@
-import 'package:counter/day12/input/date-picker.dart';
 import 'package:counter/day12/input/dropdown.dart';
 import 'package:counter/day12/input/quiz.dart';
-import 'package:counter/day12/input/radio.dart';
-import 'package:counter/day12/input/slider.dart';
 import 'package:flutter/material.dart';
-import 'day12/input/switch.dart';
 import 'day12/input/checkbox.dart';
-import 'day12/button/elevated-button.dart';
+import 'day13/button/elevated-button.dart';
 
 void main() => runApp(MyApp());
 
@@ -35,10 +31,8 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
   );
 
   final List<Widget> _widgetOptions = <Widget>[
-    ElevatedButtonWidget(),
+    RainbowButtonWidget(),
     CheckBoxWidget(),
-    RadioWidget(),
-    SliderWidget(),
     DropdownButtonWidget(),
     HotelReservationWidget(),
   ];
@@ -77,14 +71,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
                   icon: Icon(Icons.calculate),
                   label: "체크",
                 ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.calculate),
-                  label: "라디오",
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.calculate),
-                  label: "슬라이더",
-                ),
+
                 BottomNavigationBarItem(
                   icon: Icon(Icons.calculate),
                   label: "드랍다운",
