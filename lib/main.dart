@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 // import 'package:counter/day12/radio.dart';
 // import 'package:counter/day12/slider.dart';
 // import 'package:counter/day12/dropdown.dart';
-import 'package:counter/day12/date-picker.dart';
+// import 'package:counter/day12/date-picker.dart';
 import 'package:counter/day12/quiz.dart';
-import 'package:counter/day12/button/elevated-botton.dart';
+// import 'package:counter/day12/button/elevated-botton.dart';
 import 'package:counter/day12/quiz2.dart';
 
 void main() => runApp(MyApp());
@@ -45,10 +45,10 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
     // RadioWidget(),
     // SliderWidget(),
     // DropdownWidget(),
-    DatePickerWidget(),
+    // DatePickerWidget(),
     HotelReservationWidget(),
-    ElevatedButtonWidget(),
-    ColorButtonWidget(),
+    // ElevatedButtonWidget(),
+    RainbowButtonWidget(),
   ];
 
   final PageController _pageController = PageController();
@@ -105,21 +105,21 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
                 //   icon: Icon(Icons.arrow_drop_down),
                 //   label: "드랍다운",
                 // ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.date_range),
-                  label: "날짜선택",
-                ),
+                // BottomNavigationBarItem(
+                //   icon: Icon(Icons.date_range),
+                //   label: "날짜선택",
+                // ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.hotel),
                   label: "호텔 예약",
                 ),
+                // BottomNavigationBarItem(
+                //   icon: Icon(Icons.elevator),
+                //   label: "엘리베이터 버튼",
+                // ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.elevator),
-                  label: "엘리베이터 버튼",
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.cloud_off_rounded),
-                  label: "컬러 버튼",
+                  icon: Icon(Icons.smart_button_outlined),
+                  label: "무지개 버튼",
                 ),
               ],
               currentIndex: _selectedIndex,

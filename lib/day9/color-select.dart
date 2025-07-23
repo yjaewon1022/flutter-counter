@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(ColorSelect());
+  return runApp(ColorSelect());
 }
 
 class ColorSelect extends StatelessWidget {
