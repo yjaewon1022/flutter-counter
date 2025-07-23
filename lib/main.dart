@@ -1,11 +1,7 @@
-import 'package:counter/day12/input/checkbox.dart';
-import 'package:counter/day12/input/date-picker.dart';
-import 'package:counter/day12/input/dropdown.dart';
-import 'package:counter/day12/input/radio.dart';
-import 'package:counter/day12/input/slider.dart';
-import 'package:counter/day12/input/switch.dart';
-import 'package:counter/day12/quiz.dart';
-import 'package:counter/day12/quiz2.dart';
+import 'package:counter/day13/button/elevated-button.dart';
+import 'package:counter/day13/button/icon-button.dart';
+import 'package:counter/day13/button/outlined-button.dart';
+import 'package:counter/day13/button/text-button.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -35,14 +31,10 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
   );
 
   final List<Widget> _widgetOptions = <Widget>[
-    // SwitchWidget(),
-    // CheckBoxWidget(),
-    // RadioWidget(),
-    // SliderWidget(),
-    // DropdownWidget(),
-    // DatePickerWidget(),
-    HotelReservationWidget(),
-    RainbowButtonWidget(),
+    ElevatedButtonWidget(),
+    TextButtonWidget(),
+    OutlinedButtonWidget(),
+    IconButtonWidget(),
   ];
 
   final PageController _pageController = PageController();
@@ -71,37 +63,21 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
             bottomNavigationBar: BottomNavigationBar(
               type: BottomNavigationBarType.fixed,
               items: const <BottomNavigationBarItem>[
-                // BottomNavigationBarItem(
-                //   icon: Icon(Icons.switch_access_shortcut),
-                //   label: '스위치',
-                // ),
-                // BottomNavigationBarItem(
-                //   icon: Icon(Icons.check_box),
-                //   label: '체크박스',
-                // ),
-                // BottomNavigationBarItem(
-                //   icon: Icon(Icons.radio_button_checked),
-                //   label: '라디오버튼',
-                // ),
-                // BottomNavigationBarItem(
-                //   icon: Icon(Icons.slideshow),
-                //   label: '슬라이더',
-                // ),
-                // BottomNavigationBarItem(
-                //   icon: Icon(Icons.arrow_drop_down),
-                //   label: '드랍다운',
-                // ),
-                // BottomNavigationBarItem(
-                //   icon: Icon(Icons.date_range),
-                //   label: '날짜 선택',
-                // ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.hotel),
-                  label: '호텔 예약',
+                  icon: Icon(Icons.smart_button),
+                  label: "입체 버튼",
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.text_format),
+                  label: "텍스트 버튼",
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.smart_button_outlined),
-                  label: "무지개 버튼",
+                  label: "아웃라인 버튼",
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.android),
+                  label: "아이콘 버튼",
                 ),
               ],
               currentIndex: _selectedIndex,

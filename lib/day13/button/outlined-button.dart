@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  return runApp(ElevatedButtonWidget());
+  return runApp(OutlinedButtonWidget());
 }
 
-class ElevatedButtonWidget extends StatefulWidget {
+class OutlinedButtonWidget extends StatefulWidget {
   @override
-  State<ElevatedButtonWidget> createState() => ElevatedButtonWidgetState();
+  State<OutlinedButtonWidget> createState() => OutlinedButtonWidgetState();
 }
 
-class ElevatedButtonWidgetState extends State<ElevatedButtonWidget> {
+class OutlinedButtonWidgetState extends State<OutlinedButtonWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        child: ElevatedButton(
+        child: OutlinedButton(
           onPressed: () {
             print('버튼 클릭됨!');
           },
