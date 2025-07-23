@@ -41,6 +41,7 @@ class NormalTextFieldState extends State<NormalTextFieldWidget> {
         padding: EdgeInsets.all(10),
         child: ListView(
           children: [
+            // 방법1 : onchanged로 실시간 값 받기 --------------
             TextField(
               //컨트롤러 사용
               controller: controller,
@@ -56,7 +57,8 @@ class NormalTextFieldState extends State<NormalTextFieldWidget> {
                 changeText(value);
               },
             ),
-            // 텍스트필드 하단에 출력해줘--------------
+            // 방법2 : 컨트롤러로 한번에 받기--------------
+            //텍스트필드 하단에 출력해줘
             Text("setState로 실시간 값 받기 : $_text"),
             //버튼 누르면 값을 넣어줘
             ElevatedButton(

@@ -5,6 +5,7 @@ import 'radio.dart';
 import 'slider.dart';
 import 'dropdown.dart';
 import 'date-picker.dart';
+import 'quiz.dart';
 
 void main() => runApp(MyApp());
 
@@ -33,6 +34,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
   );
 
   final List<Widget> _widgetOptions = <Widget>[
+    Quiz1Widget(),
     SwitchWidget(),
     CheckBoxWidget(),
     RadioWidget(),
@@ -67,6 +69,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
             bottomNavigationBar: BottomNavigationBar(
               type: BottomNavigationBarType.fixed,
               items: const <BottomNavigationBarItem>[
+                BottomNavigationBarItem(icon: Icon(Icons.hotel), label: "호텔예약"),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.switch_access_shortcut),
                   label: "스위치",
