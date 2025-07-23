@@ -1,6 +1,12 @@
-import 'package:counter/day13/navigation/first.dart';
-import 'package:counter/day13/navigation/second.dart';
+import 'package:counter/day12/quiz2.dart';
 import 'package:flutter/material.dart';
+
+import '../../day12/quiz.dart';
+import '../../day12/quiz2.dart';
+import './elevated-button.dart';
+import './text-button.dart';
+import 'outline-button.dart';
+import 'icon-button.dart';
 
 void main() => runApp(MyApp());
 
@@ -21,52 +27,73 @@ class MyStatefulWidget extends StatefulWidget {
 }
 
 class MyStatefulWidgetState extends State<MyStatefulWidget> {
-  //
-  int number = 12341234;
+  int _selectedIndex = 0;
+
+  static const TextStyle optionStyle = TextStyle(
+    fontSize: 30,
+    fontWeight: FontWeight.bold,
+  );
+
+  final List<Widget> _widgetOptions = <Widget>[
+    // ColorBGWidget(),
+    ElevatedButtonWidget(),
+    TextButtonWidget(),
+    OutLineButtonWidget(),
+    IconButtonWidget(),
+  ];
+
+  final PageController _pageController = PageController();
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Flutter 예제')),
-      body: Column(
-        children: [
-          //navigator 사용해보기
-          // 앱을 처음 켜게되면 네비게이터는 빈 배열(main.dart)로 [] 사용자가 이동한 페이지를 가지고 있음
-          // first페이지로 이동시 push -> [firstPage()]
-          // 이전페이지로 이동시 pop -> [] 다시 빈배열로 바뀜 (main.dart)로 이동
-          ElevatedButton(
-            onPressed: () {
-              // 버튼 클릭시 Navigator.push 작동 -----------
-              // push해서 firstpage로 화면 이동
-              // 위에 firstpage import 되있음
-              // MaterialPageRoute : 페이지이동 도와줌
-              Navigator.push(
-                context,
-
-                // 다음 페이지로 데이터 전달하기
-                // MaterialPageRoute(builder: (context) => FirstPage()
-                //MaterialPageRoute(builder: (context) => FirstPage(data:옮길데이터)
-                MaterialPageRoute(
-                  builder: (context) => FirstPage(data: number),
+      body: PageView(
+        controller: _pageController,
+        children: <Widget>[
+          Scaffold(
+            body: Center(child: _widgetOptions.elementAt(_selectedIndex)),
+            bottomNavigationBar: BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
+              items: const <BottomNavigationBarItem>[
+                // BottomNavigationBarItem(
+                //   icon: Icon(Icons.collections_rounded),
+                //   label: "무지개 버튼",
+                // ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.collections_rounded),
+                  label: "엘리베이티드버튼",
                 ),
-              );
-            },
-            child: Text("첫번째 페이지로 이동"),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              // 버튼 클릭시 Navigator.push 작동 -----------
-              // push해서 firstpage로 화면 이동
-              // 위에 firstpage import 되있음
-              Navigator.push(
-                context,
-                // MaterialPageRoute : 페이지이동 도와줌
-                MaterialPageRoute(
-                  builder: (context) => SecondPage(data: number),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.collections_rounded),
+                  label: "텍스트버튼",
                 ),
-              );
-            },
-            child: Text("두번째 페이지로 이동"),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.collections_rounded),
+                  label: "아웃라인버튼",
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.collections_rounded),
+                  label: "아이콘버튼",
+                ),
+              ],
+              currentIndex: _selectedIndex,
+              selectedItemColor: Colors.white,
+              backgroundColor: Colors.blueAccent,
+              onTap: _onItemTapped,
+            ),
           ),
         ],
       ),
