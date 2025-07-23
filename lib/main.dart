@@ -1,7 +1,4 @@
-import 'package:counter/day13/button/elevated-button.dart';
-import 'package:counter/day13/button/icon-button.dart';
-import 'package:counter/day13/button/outlined-button.dart';
-import 'package:counter/day13/button/text-button.dart';
+import 'package:counter/day13/navigation/first.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -23,68 +20,29 @@ class MyStatefulWidget extends StatefulWidget {
 }
 
 class MyStatefulWidgetState extends State<MyStatefulWidget> {
-  int _selectedIndex = 0;
-
-  static const TextStyle optionStyle = TextStyle(
-    fontSize: 30,
-    fontWeight: FontWeight.bold,
-  );
-
-  final List<Widget> _widgetOptions = <Widget>[
-    ElevatedButtonWidget(),
-    TextButtonWidget(),
-    OutlinedButtonWidget(),
-    IconButtonWidget(),
-  ];
-
-  final PageController _pageController = PageController();
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Flutter 예제')),
-      body: PageView(
-        controller: _pageController,
-        children: <Widget>[
-          Scaffold(
-            body: Center(child: _widgetOptions.elementAt(_selectedIndex)),
-            bottomNavigationBar: BottomNavigationBar(
-              type: BottomNavigationBarType.fixed,
-              items: const <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.smart_button),
-                  label: "입체 버튼",
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.text_format),
-                  label: "텍스트 버튼",
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.smart_button_outlined),
-                  label: "아웃라인 버튼",
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.android),
-                  label: "아이콘 버튼",
-                ),
-              ],
-              currentIndex: _selectedIndex,
-              selectedItemColor: Colors.white,
-              backgroundColor: Colors.blueAccent,
-              onTap: _onItemTapped,
-            ),
+      body: Column(
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              // Navigator = 화면(페이지) 별 이동을 하는 등 실제로 화면을 변경해주는 친구
+              // push = 이후에 입력된 화면으로 이동해라! 라는 명령
+              // Navigator.push 사용방법 = Navigator.push(context, 이동할 페이지)
+              // MaterialPageRoute = 어떤 페이지로 이동할지 컴퓨터에게 알려주는 친구
+              // Navigator 는 사용자가 어떤 페이지에 이동을 해있는지를 기본적으로 가지고 있음
+              // 기본적으로 [] 빈 배열로 사용자가 이동한 페이지들을 가지고 있게 됨
+              // 앱을 처음 키게 되면 Navigator 는 빈배열 (main.dart) 파일을 가리키게 됨.
+              // 이후에 push 를 진행하면 배열 안에 [FirstPage()] 라는 값이 들어가게 되고,
+              // 화면을 해당 파일(페이지)로 이동하게 됨.
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => FirstPage()),
+              );
+            },
+            child: Text("첫 번째 페이지로 이동"),
           ),
         ],
       ),
