@@ -1,8 +1,5 @@
-import 'package:counter/dat13/button/elevated.button.dart';
-import 'package:counter/dat13/button/outlined.button.dart';
-import 'package:counter/dat13/button/text.button.dart';
-import 'package:counter/day12/quiz.dart';
-import 'package:counter/day12/quiz2.dart';
+import 'package:counter/dat13/navigation/first.dart';
+import 'package:counter/dat13/navigation/second.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -26,91 +23,40 @@ class MyStatefulWidget extends StatefulWidget {
 class MyStatefulWidgetState extends State<MyStatefulWidget> {
   int _selectedIndex = 0;
 
-  static const TextStyle optionStyle = TextStyle(
-    fontSize: 30,
-    fontWeight: FontWeight.bold,
-  );
-
-  final List<Widget> _widgetOptions = <Widget>[
-    // SwitchWidget(),
-    // CheckBoxWidget(),
-    // RadioWidget(),
-    // SliderWidget(),
-    // dropDownWidget(),
-    // DatePickerWidget(),
-    QuizWidget(),
-    RainbowButtonWidget(),
-    ElevatedButtonWidget(),
-    TextButtonWidget(),
-    OutlinedButtonWidget(),
-  ];
-
-  final PageController _pageController = PageController();
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Flutter 예제')),
-      body: PageView(
-        controller: _pageController,
-        children: <Widget>[
-          Scaffold(
-            body: Center(child: _widgetOptions.elementAt(_selectedIndex)),
-            bottomNavigationBar: BottomNavigationBar(
-              type: BottomNavigationBarType.fixed,
-              items: const <BottomNavigationBarItem>[
-                // BottomNavigationBarItem(
-                //   icon: Icon(Icons.switch_access_shortcut),
-                //   label: "스위치",
-                // ),
-                // BottomNavigationBarItem(
-                //   icon: Icon(Icons.check_box),
-                //   label: "체크박스",
-                // ),
-                // BottomNavigationBarItem(
-                //   icon: Icon(Icons.radio_button_checked),
-                //   label: "라디오버튼",
-                // ),
-                // BottomNavigationBarItem(
-                //   icon: Icon(Icons.slideshow),
-                //   label: "슬라이드",
-                // ),
-                // BottomNavigationBarItem(
-                //   icon: Icon(Icons.arrow_drop_down),
-                //   label: "드랍다운",
-                // ),
-                // BottomNavigationBarItem(
-                //   icon: Icon(Icons.date_range),
-                //   label: "날짜 선택",
-                // ),
-                BottomNavigationBarItem(icon: Icon(Icons.hotel), label: "예약"),
-                BottomNavigationBarItem(icon: Icon(Icons.abc), label: "무지개버튼"),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.access_alarm),
-                  label: "입체버튼",
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.text_decrease),
-                  label: "텍스트버튼",
-                ),
-              ],
-              currentIndex: _selectedIndex,
-              selectedItemColor: Colors.white,
-              backgroundColor: Colors.blueAccent,
-              onTap: _onItemTapped,
-            ),
+      body: Column(
+        children: [
+          Text('첫 번째 페이지입니다.'),
+          ElevatedButton(
+            onPressed: () {
+              //Navigator = 화면(페이지) 간 이동 하는 등 실제로 화면 변경
+              //Push = 이후에 입력된 화면으로 이동하라! 는 명령
+              //Navigator.push(context,이동할 페이지)
+              // MaterialPageRoute = 어떤 페이지로 이동할지 컴퓨터에게 알려줌
+              //Navigator 는 사용자가 어떤 페이지에 이동을 해왔는지 기본적으로 가지고 있음
+              //기본적으로 [] 빈 배열로 사용자가 이동한 페이지들을 가지고 있게 됨
+              //앱을 처음 키게 되면 Navigator는 빈배열(main.dart)파일을 가리키게 됨
+              //이후에 push 를 진행하면 배열 안에 [Fistpage]를 갖게 됨
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => FirstPage()),
+              );
+            },
+            child: Text('메인 페이지로 돌아가기'),
+          ),
+          Text('두번째 페이지입니다.'),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SecondPage()),
+              );
+            },
+            child: Text('메인 페이지로 돌아가기'),
           ),
         ],
       ),
