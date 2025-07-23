@@ -1,10 +1,6 @@
 import 'package:counter/dat13/button/elevated.button.dart';
-import 'package:counter/day12/input/checkbox.dart';
-import 'package:counter/day12/input/date.picker.dart';
-import 'package:counter/day12/input/dropdown.dart';
-import 'package:counter/day12/input/radio.dart';
-import 'package:counter/day12/input/slider.dart';
-import 'package:counter/day12/input/switch.dart';
+import 'package:counter/dat13/button/outlined.button.dart';
+import 'package:counter/dat13/button/text.button.dart';
 import 'package:counter/day12/quiz.dart';
 import 'package:counter/day12/quiz2.dart';
 import 'package:flutter/material.dart';
@@ -44,6 +40,9 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
     // DatePickerWidget(),
     QuizWidget(),
     RainbowButtonWidget(),
+    ElevatedButtonWidget(),
+    TextButtonWidget(),
+    OutlinedButtonWidget(),
   ];
 
   final PageController _pageController = PageController();
@@ -98,6 +97,14 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
                 // ),
                 BottomNavigationBarItem(icon: Icon(Icons.hotel), label: "예약"),
                 BottomNavigationBarItem(icon: Icon(Icons.abc), label: "무지개버튼"),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.access_alarm),
+                  label: "입체버튼",
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.text_decrease),
+                  label: "텍스트버튼",
+                ),
               ],
               currentIndex: _selectedIndex,
               selectedItemColor: Colors.white,
