@@ -3,6 +3,7 @@ import 'package:counter/day13/view/grid-view.dart';
 import 'package:counter/day13/view/list-view.dart';
 import 'package:counter/day13/view/list-wheel-scroll-view.dart';
 import 'package:counter/day13/view/page-view.dart';
+import 'package:counter/day13/view/reorderable-list-view.dart';
 import 'package:counter/day13/view/single-child-scroll-view.dart';
 import 'package:counter/day13/view/tab-bar-view.dart';
 import 'package:flutter/material.dart';
@@ -102,6 +103,17 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
               );
             },
             child: Text("Dismissible"),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ReorderableListViewPage(),
+                ),
+              );
+            },
+            child: Text("ReorderableListView"),
           ),
         ],
       ),
