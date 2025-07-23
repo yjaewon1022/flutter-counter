@@ -11,33 +11,50 @@ class GridViewPage extends StatelessWidget {
         crossAxisCount: 2,
         children: [
           Container(
-            child: Center(child: Text("1")),
             color: Colors.red,
+            child: Center(child: Text("1")),
           ),
+          // Container(
+          //   color: Colors.red,
+          //   child: Center(
+          //     child: ConstrainedBox(
+          //       constraints: BoxConstraints.expand(),
+          //       child: TextButton(
+          //         onPressed: () {},
+          //         style: TextButton.styleFrom(
+          //           shape: RoundedRectangleBorder(
+          //             borderRadius: BorderRadius.all(Radius.circular(0)),
+          //           ),
+          //         ),
+          //         child: Text("버튼1", style: TextStyle(color: Colors.black)),
+          //       ),
+          //     ),
+          //   ),
+          // ),
           Container(
-            child: Center(child: Text("2")),
             color: Colors.blue,
+            child: Center(child: Text("2")),
           ),
           Container(
-            child: Center(child: Text("3")),
             color: Colors.green,
+            child: Center(child: Text("3")),
           ),
           Container(
-            child: Center(child: Text("4")),
             color: Colors.yellow,
+            child: Center(child: Text("4")),
           ),
           Container(child: Center(child: Text("5"))),
           Container(
-            child: Center(child: Text("6")),
             color: Colors.green,
+            child: Center(child: Text("6")),
           ),
           Container(
-            child: Center(child: Text("7")),
             color: Colors.lime,
+            child: Center(child: Text("7")),
           ),
           Container(
-            child: Center(child: Text("8")),
             color: Colors.red,
+            child: Center(child: Text("8")),
           ),
         ],
       ),
