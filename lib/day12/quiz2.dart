@@ -5,70 +5,74 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  return runApp(ElevatedButtonWidget());
+  return runApp(RainbowButtonWidget());
 }
 
-class ElevatedButtonWidget extends StatefulWidget {
+class RainbowButtonWidget extends StatefulWidget {
   @override
-  State<ElevatedButtonWidget> createState() => ElevatedButtonWidgetState();
+  State<RainbowButtonWidget> createState() => RainbowButtonWidgetState();
 }
 
-class ElevatedButtonWidgetState extends State<ElevatedButtonWidget> {
+class RainbowButtonWidgetState extends State<RainbowButtonWidget> {
+  //버튼을 눌렀을 때 배경색을 변경해야 하니, 어떤 색을 눌렀는지 값을 담을 수 있는 변수를 선언
+  Color color = Colors.white;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        constraints: BoxConstraints.expand(),
+        color: color,
         child: Column(
           children: [
             ElevatedButton(
               onPressed: () {
-                print;
-                (Color: Colors.red);
+                setState(() {
+                  color = Colors.red;
+                });
               },
               child: Text('빨강'),
             ),
             ElevatedButton(
               onPressed: () {
-                print;
-                (Color: Colors.orange);
+                setState(() {
+                  color = Colors.orange;
+                });
               },
               child: Text('주황'),
             ),
             ElevatedButton(
               onPressed: () {
-                print;
-                (Color: Colors.yellow);
+                setState(() {
+                  color = Colors.yellow;
+                });
               },
               child: Text('노랑'),
             ),
             ElevatedButton(
               onPressed: () {
-                print;
-                (Color: Colors.green);
+                setState(() {
+                  color = Colors.green;
+                });
               },
               child: Text('초록'),
             ),
             ElevatedButton(
               onPressed: () {
-                print;
-                (Color: Colors.blue);
+                setState(() {
+                  color = Colors.blue;
+                });
               },
               child: Text('파랑'),
             ),
             ElevatedButton(
               onPressed: () {
-                print;
-                (Color: Colors.indigo);
+                setState(() {
+                  color = Colors.indigo;
+                });
               },
               child: Text('남'),
             ),
-            ElevatedButton(
-              onPressed: () {
-                print;
-                (Color: Colors.purple);
-              },
-              child: Text('보라'),
-            ),
+            ElevatedButton(onPressed: () {}, child: Text('보라')),
           ],
         ),
       ),
