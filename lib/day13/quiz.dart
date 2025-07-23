@@ -5,17 +5,8 @@
 // 구현하는 방법을 모르시겠다면 일단 폴더를 새로 만들어 각 기능들을 담당하는 파일을 만들어보세요.
 // 각 페이지들로 데이터를 전달 할 때에는 다음의 Map 변수를 사용하시면 됩니다.
 
+import 'package:counter/day13/quiz/day.dart';
 import 'package:flutter/material.dart';
-
-Map data = {
-  // day 의 value 는 DateTime 으로 변경
-  "day": "",
-  // time 의 value 는 TimeOfDay 로 변경
-  "time": "",
-  "room": "",
-  "name": "",
-  "userAgreed": false,
-};
 
 void main() {
   return runApp(MyApp());
@@ -39,8 +30,42 @@ class Hotel extends StatefulWidget {
 }
 
 class HotelState extends State<StatefulWidget> {
+  Map data = {
+    "day": null,
+    "time": null,
+    "room": null,
+    "name": null,
+    "userAgreed": false,
+  };
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: Text("호텔 예약하기")));
+    return Scaffold(
+      appBar: AppBar(title: Text("호텔 예약하기")),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.all(16),
+        child: Center(
+          child: Column(
+            children: [
+              Text("호텔 예약 프로그램", style: TextStyle(fontSize: 16)),
+              Text("아래의 버튼을 눌러서 호텔을 예약해보세요."),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return DayPage(data: data);
+                      },
+                    ),
+                  );
+                },
+                child: Text("호텔 예약하기"),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
