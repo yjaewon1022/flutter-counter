@@ -1,13 +1,12 @@
 import 'package:counter/day12/quiz2.dart';
 import 'package:flutter/material.dart';
-import './switch.dart';
-import 'checkbox.dart';
-import 'radio.dart';
-import 'slider.dart';
-import 'dropdown.dart';
-import 'date-picker.dart';
-import 'quiz.dart';
-import 'quiz2.dart';
+
+import '../../day12/quiz.dart';
+import '../../day12/quiz2.dart';
+import '.././elevated-button.dart';
+import '.././text-button.dart';
+import '../outline-button.dart';
+import '../icon-button.dart';
 
 void main() => runApp(MyApp());
 
@@ -36,14 +35,11 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
   );
 
   final List<Widget> _widgetOptions = <Widget>[
-    Quiz1Widget(),
     ColorBGWidget(),
-    // SwitchWidget(),
-    // CheckBoxWidget(),
-    // RadioWidget(),
-    // SliderWidget(),
-    // DropDownWidget(),
-    // DatePickerWidget(),
+    ElevatedButtonWidget(),
+    TextButtonWidget(),
+    OutLineButtonWidget(),
+    IconButtonWidget(),
   ];
 
   final PageController _pageController = PageController();
@@ -72,36 +68,26 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
             bottomNavigationBar: BottomNavigationBar(
               type: BottomNavigationBarType.fixed,
               items: const <BottomNavigationBarItem>[
-                BottomNavigationBarItem(icon: Icon(Icons.hotel), label: "호텔예약"),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.collections_rounded),
                   label: "무지개 버튼",
                 ),
-
-                // BottomNavigationBarItem(
-                //   icon: Icon(Icons.switch_access_shortcut),
-                //   label: "스위치",
-                // ),
-                // BottomNavigationBarItem(
-                //   icon: Icon(Icons.check_box),
-                //   label: "체크박스",
-                // ),
-                // BottomNavigationBarItem(
-                //   icon: Icon(Icons.radio_button_checked),
-                //   label: "라디오",
-                // ),
-                // BottomNavigationBarItem(
-                //   icon: Icon(Icons.slideshow_rounded),
-                //   label: "슬라이더",
-                // ),
-                // BottomNavigationBarItem(
-                //   icon: Icon(Icons.arrow_drop_down),
-                //   label: "드랍다운",
-                // ),
-                // BottomNavigationBarItem(
-                //   icon: Icon(Icons.calendar_today_outlined),
-                //   label: "데이트피커",
-                // ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.collections_rounded),
+                  label: "엘리베이티드버튼",
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.collections_rounded),
+                  label: "텍스트버튼",
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.collections_rounded),
+                  label: "아웃라인버튼",
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.collections_rounded),
+                  label: "아이콘버튼",
+                ),
               ],
               currentIndex: _selectedIndex,
               selectedItemColor: Colors.white,
