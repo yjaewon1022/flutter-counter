@@ -1,15 +1,9 @@
-// import 'package:counter/day11/day11-quiz.dart';
-// import 'package:counter/day9/note.dart';
 import 'package:flutter/material.dart';
-// import 'package:counter/day12/switch.dart';
-// import 'package:counter/day12/checkbox.dart';
-// import 'package:counter/day12/radio.dart';
-// import 'package:counter/day12/slider.dart';
-// import 'package:counter/day12/dropdown.dart';
-// import 'package:counter/day12/date-picker.dart';
-import 'package:counter/day12/quiz.dart';
-// import 'package:counter/day12/button/elevated-botton.dart';
-import 'package:counter/day12/quiz2.dart';
+// import 'package:counter/day12/quiz2.dart';
+import 'package:counter/day13/button/elevated-button.dart';
+import 'package:counter/day13/button/text-button.dart';
+import 'package:counter/day13/button/outlined-button.dart';
+import 'package:counter/day13/button/icon-button.dart';
 
 void main() => runApp(MyApp());
 
@@ -38,17 +32,12 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
   );
 
   final List<Widget> _widgetOptions = <Widget>[
-    // NoteWidget(),
-    // CalculatorWidget(),
-    // SwitchWidget(),
-    // CheckBoxWidget(),
-    // RadioWidget(),
-    // SliderWidget(),
-    // DropdownWidget(),
-    // DatePickerWidget(),
-    HotelReservationWidget(),
-    // ElevatedButtonWidget(),
-    RainbowButtonWidget(),
+    // HotelReservationWidget(),
+    // RainbowButtonWidget(),
+    ElevatedButtonWidget(),
+    TextButtonWidget(),
+    OutlinedButtonWidget(),
+    IconButtonWidget(),
   ];
 
   final PageController _pageController = PageController();
@@ -78,48 +67,28 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
               type: BottomNavigationBarType.fixed,
               items: const <BottomNavigationBarItem>[
                 // BottomNavigationBarItem(
-                //   icon: Icon(Icons.note_add),
-                //   label: "자소서 작성",
+                //   icon: Icon(Icons.hotel),
+                //   label: "호텔 예약",
                 // ),
                 // BottomNavigationBarItem(
-                //   icon: Icon(Icons.calculate),
-                //   label: "계산기",
-                // ),
-                // BottomNavigationBarItem(
-                //   icon: Icon(Icons.switch_access_shortcut),
-                //   label: "스위치",
-                // ),
-                // BottomNavigationBarItem(
-                //   icon: Icon(Icons.check_box),
-                //   label: "체크박스",
-                // ),
-                // BottomNavigationBarItem(
-                //   icon: Icon(Icons.radio_button_checked),
-                //   label: "라디오 버튼",
-                // ),
-                // BottomNavigationBarItem(
-                //   icon: Icon(Icons.slideshow),
-                //   label: "슬라이더",
-                // ),
-                // BottomNavigationBarItem(
-                //   icon: Icon(Icons.arrow_drop_down),
-                //   label: "드랍다운",
-                // ),
-                // BottomNavigationBarItem(
-                //   icon: Icon(Icons.date_range),
-                //   label: "날짜선택",
+                //   icon: Icon(Icons.smart_button_outlined),
+                //   label: "무지개 버튼",
                 // ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.hotel),
-                  label: "호텔 예약",
+                  icon: Icon(Icons.elevator),
+                  label: "입체 버튼",
                 ),
-                // BottomNavigationBarItem(
-                //   icon: Icon(Icons.elevator),
-                //   label: "엘리베이터 버튼",
-                // ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.smart_button_outlined),
-                  label: "무지개 버튼",
+                  icon: Icon(Icons.text_decrease),
+                  label: "텍스트 버튼",
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.smart_button),
+                  label: "아웃라인 버튼",
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.import_contacts),
+                  label: "아이콘 버튼",
                 ),
               ],
               currentIndex: _selectedIndex,
