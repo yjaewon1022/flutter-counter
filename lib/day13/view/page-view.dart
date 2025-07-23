@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 class PageViewPage extends StatelessWidget {
   var pageController = PageController();
 
-  // dispose = 현재 할ㄹ당되어 있는 메모리를 해제한다.
+  // dispose = 현재 할당되어 있는 메모리를 해제한다.
   // dispose 는 현재 class 가 State<> 로 선언 되어있을 때 사용할 수 있는 함수
   // State<> 로 선언이 되려면 StatefulWidget 으로 설정되어 있어야 실제 사용 가능
   // @override
