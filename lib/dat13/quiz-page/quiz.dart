@@ -1,3 +1,4 @@
+import 'package:counter/dat13/quiz-page/day.dart';
 import 'package:counter/dat13/quiz-page/time.dart';
 import 'package:flutter/material.dart';
 
@@ -32,14 +33,25 @@ class HotelState extends State<Hotel> {
       appBar: AppBar(title: Text('호텔예약')),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16),
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => TimePage(data: data)),
-            );
-          },
-          child: Text('호텔 예약하기', style: TextStyle(fontSize: 16)),
+
+        child: Center(
+          child: Column(
+            children: [
+              Text('호텔 예약하기', style: TextStyle(fontSize: 16)),
+              Text('아래의 버튼을 눌러서 호텔을 예약해보세요.'),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DayPage(data: data),
+                    ),
+                  );
+                },
+                child: Text("날짜 선택하기"),
+              ),
+            ],
+          ),
         ),
       ),
     );
