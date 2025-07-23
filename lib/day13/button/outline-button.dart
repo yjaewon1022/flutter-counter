@@ -1,38 +1,24 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  return runApp(TextButtonWidget());
+  return runApp(OutlinedButtonWidget());
 }
 
-class TextButtonWidget extends StatefulWidget {
+class OutlinedButtonWidget extends StatefulWidget {
   @override
-  State<TextButtonWidget> createState() => TextButtonWidgetState();
+  State<OutlinedButtonWidget> createState() => OutlinedButtonWidgetState();
 }
 
-class TextButtonWidgetState extends State<TextButtonWidget> {
-  Color color = Colors.white;
-
+class OutlinedButtonWidgetState extends State<OutlinedButtonWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: color,
-        padding: EdgeInsets.all(20),
-        child: ListView(
-          children: [
-            Column(
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      color = Colors.red;
-                    });
-                  },
-                  child: Text('빨강'),
-                ),
-              ],
-            ),
-          ],
+        child: OutlinedButton(
+          onPressed: () {
+            print('버튼 클릭됨!');
+          },
+          child: Text('클릭'),
         ),
       ),
     );

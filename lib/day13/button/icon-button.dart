@@ -1,38 +1,24 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  return runApp(TextButtonWidget());
+  return runApp(IconButtonWidget());
 }
 
-class TextButtonWidget extends StatefulWidget {
+class IconButtonWidget extends StatefulWidget {
   @override
-  State<TextButtonWidget> createState() => TextButtonWidgetState();
+  State<IconButtonWidget> createState() => IconButtonWidgetState();
 }
 
-class TextButtonWidgetState extends State<TextButtonWidget> {
-  Color color = Colors.white;
-
+class IconButtonWidgetState extends State<IconButtonWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: color,
-        padding: EdgeInsets.all(20),
-        child: ListView(
-          children: [
-            Column(
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      color = Colors.red;
-                    });
-                  },
-                  child: Text('빨강'),
-                ),
-              ],
-            ),
-          ],
+        child: IconButton(
+          onPressed: () {
+            print('버튼 클릭됨!');
+          },
+          icon: Icon(Icons.back_hand),
         ),
       ),
     );

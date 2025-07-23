@@ -1,8 +1,5 @@
-import 'package:counter/day12/input/dropdown.dart';
-import 'package:counter/day12/input/quiz.dart';
+import 'package:counter/day13/navigation/fisrt.dart';
 import 'package:flutter/material.dart';
-import 'day12/input/checkbox.dart';
-import 'day13/button/elevated-button.dart';
 
 void main() => runApp(MyApp());
 
@@ -23,69 +20,24 @@ class MyStatefulWidget extends StatefulWidget {
 }
 
 class MyStatefulWidgetState extends State<MyStatefulWidget> {
-  int _selectedIndex = 0;
-
-  static const TextStyle optionStyle = TextStyle(
-    fontSize: 30,
-    fontWeight: FontWeight.bold,
-  );
-
-  final List<Widget> _widgetOptions = <Widget>[
-    RainbowButtonWidget(),
-    CheckBoxWidget(),
-    DropdownButtonWidget(),
-    HotelReservationWidget(),
-  ];
-
-  final PageController _pageController = PageController();
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Flutter 예제')),
-      body: PageView(
-        controller: _pageController,
-        children: <Widget>[
-          Scaffold(
-            body: Center(child: _widgetOptions.elementAt(_selectedIndex)),
-            bottomNavigationBar: BottomNavigationBar(
-              type: BottomNavigationBarType.fixed,
-              items: const <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.calculate),
-                  label: "버튼",
+      body: Column(
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              // 이후에 입력된 화면으로 이동해라라는 명령어
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  // 어떤 페이지로 이동할지 알려주는 놈
+                  builder: (context) => FirstPage(),
                 ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.calculate),
-                  label: "체크",
-                ),
-
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.calculate),
-                  label: "드랍다운",
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.calculate),
-                  label: "예약",
-                ),
-              ],
-              currentIndex: _selectedIndex,
-              selectedItemColor: Colors.white,
-              backgroundColor: Colors.blueAccent,
-              onTap: _onItemTapped,
-            ),
+              );
+            },
+            child: Text("첫번째 페이지 이동"),
           ),
         ],
       ),
