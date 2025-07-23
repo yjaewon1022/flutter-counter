@@ -21,6 +21,9 @@ class MyStatefulWidget extends StatefulWidget {
 
 class MyStatefulWidgetState extends State<MyStatefulWidget> {
   int number = 12431243;
+  void changeText(String value) {
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +54,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
             },
             child: Text("첫 번째 페이지로 이동"),
           ),
+
           Text("$number"),
         ],
       ),
