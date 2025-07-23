@@ -21,7 +21,7 @@ class MyStatefulWidget extends StatefulWidget {
 }
 
 class MyStatefulWidgetState extends State<MyStatefulWidget> {
-  int _selectedIndex = 0;
+  int number = 12123120;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,12 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
 
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => FirstPage()),
+                //페이지를 이동할 때 전체 페이지에 있는 변수를 다음 페이지로 전달하는 방법은 다음과 같습니다.
+                //데이터 전달을 하지 않을 때 MaterialPageRoute(builder: (context) => FirstPage()),
+                //데이터 전달을 해야 할 때 MaterialPageRoute(builder: (context) => FirstPage(data:옮길 데이터)),
+                MaterialPageRoute(
+                  builder: (context) => FirstPage(data: number),
+                ),
               );
             },
             child: Text('메인 페이지로 돌아가기'),
@@ -57,6 +62,13 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
               );
             },
             child: Text('메인 페이지로 돌아가기'),
+          ),
+          Text("$number"),
+          Row(
+            children: [
+              ElevatedButton(onPressed: () {}, child: Text('+')),
+              ElevatedButton(onPressed: () {}, child: Text('-')),
+            ],
           ),
         ],
       ),
