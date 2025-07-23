@@ -20,6 +20,8 @@ class MyStatefulWidget extends StatefulWidget {
 }
 
 class MyStatefulWidgetState extends State<MyStatefulWidget> {
+  int number = 12431243;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,11 +41,17 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
               // 화면을 해당 파일(페이지)로 이동하게 됨.
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => FirstPage()),
+                // 페이지를 이동할 때 현재 페이지에 있는 변수를 다음 페이지로 전달하는 방법은 다음과 같습니다.
+                // 데이터 전달을 하지 않을 땐 : MaterialPageRoute(builder: (context) => FirstPage()),
+                // 데이터 전달을 해야 할 땐   : MaterialPageRoute(builder: (context) => FirstPage(data:옮길데이터)),
+                MaterialPageRoute(
+                  builder: (context) => FirstPage(data: number),
+                ),
               );
             },
             child: Text("첫 번째 페이지로 이동"),
           ),
+          Text("$number"),
         ],
       ),
     );
