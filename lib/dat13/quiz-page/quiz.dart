@@ -20,10 +20,10 @@ class Hotel extends StatefulWidget {
 
 class HotelState extends State<Hotel> {
   Map data = {
-    "day": "",
-    "time": "",
-    "room": "",
-    "name": "",
+    "day": null,
+    "time": null,
+    "room": null,
+    "name": null,
     "userAgreed": false,
   };
 

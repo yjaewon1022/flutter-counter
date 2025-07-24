@@ -61,10 +61,12 @@ class DayPageState extends State<DayPage> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  // Navigator.push(
-                  //   context,
-                  //   //MaterialPageRoute(builder: context)=> TimePage(data: data)
-                  // );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TimePage(data: givenData),
+                    ),
+                  );
                 },
                 child: Text('시간 지정하러 가기'),
               ),
