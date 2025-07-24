@@ -21,6 +21,9 @@ class DaypageState extends State<Daypage> {
     givenData = data;
   }
 
+  // 체크확인하는 변수선언
+  bool isChecked = false;
+
   // 날짜 선택하는 기능 만들기 -----------------
   void selectDate() async {
     //showDatePicker 를 이용해서 달력 세부사항 지정
@@ -39,6 +42,8 @@ class DaypageState extends State<Daypage> {
 
     setState(() {
       givenData["day"] = picked.toString().substring(0, 10);
+      //날짜체크확인
+      isChecked = true;
     });
   }
 
@@ -62,16 +67,18 @@ class DaypageState extends State<Daypage> {
             ],
           ),
           ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (BuildContext context) {
-                    return TimePage(data: givenData);
-                  },
-                ),
-              );
-            },
+            onPressed: isChecked
+                ? () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) {
+                          return TimePage(data: givenData);
+                        },
+                      ),
+                    );
+                  }
+                : null,
             child: Text("시간 지정하러 가기"),
           ),
         ],

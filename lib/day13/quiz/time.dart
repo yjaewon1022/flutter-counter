@@ -1,3 +1,4 @@
+import 'package:counter/day13/quiz/room.dart';
 import 'package:flutter/material.dart';
 
 class TimePage extends StatefulWidget {
@@ -35,7 +36,7 @@ class TimePageState extends State<TimePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("날짜 지정하기")),
+      appBar: AppBar(title: Text("시간 지정하기")),
       body: Column(
         children: [
           Row(
@@ -50,17 +51,17 @@ class TimePageState extends State<TimePage> {
           ),
           ElevatedButton(
             onPressed: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (BuildContext context) {
-              //       return TimePage(data: givenData);
-              //     },
-              //   ),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) {
+                    return RoomPage(data: givenData);
+                  },
+                ),
+              );
               print(givenData);
             },
-            child: Text("이름 작성하러 가기"),
+            child: Text("방 지정하러 가기"),
           ),
         ],
       ),

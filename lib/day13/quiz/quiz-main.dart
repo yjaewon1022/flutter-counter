@@ -4,7 +4,6 @@
 
 import 'package:counter/day13/quiz/day.dart';
 
-import 'first.dart';
 import 'date.dart';
 import 'package:flutter/material.dart';
 
