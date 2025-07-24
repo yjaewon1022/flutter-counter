@@ -1,3 +1,4 @@
+import 'package:counter/dat13/quiz-page/name.dart';
 import 'package:flutter/material.dart';
 
 class RoomPage extends StatefulWidget {
@@ -52,6 +53,19 @@ class RoomPageState extends State<RoomPage> {
                       hint: Text('room'),
                     ),
                     Text('방 선택하러가기', style: TextStyle(fontSize: 32)),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) {
+                              return NamePage(data: givenData);
+                            },
+                          ),
+                        );
+                      },
+                      child: Text("이름 작성하러 가기"),
+                    ),
                   ],
                 ),
               ),
