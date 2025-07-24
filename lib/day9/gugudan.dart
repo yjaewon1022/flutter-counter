@@ -61,6 +61,7 @@ class Gugudan extends StatelessWidget {
     }
 
     return Scaffold(
+      appBar: AppBar(title: const Text('구구단')),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         // childen 안에 문자열을 넣을려면 text 위젯을 사용한다

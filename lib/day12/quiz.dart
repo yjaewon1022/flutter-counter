@@ -96,6 +96,7 @@ class Quiz1WidgetState extends State<Quiz1Widget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: const Text('호텔 예약하기')),
       body: ListView(
         padding: EdgeInsets.all(20),
         children: [

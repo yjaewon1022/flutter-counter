@@ -56,7 +56,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
   // <widget>[] : 안에 있는게 위젯인 리스트다.
   static final List<Widget> _WidgetOptions = <Widget>[
     // Book(),
-    // Gugudan(),
+    Gugudan(),
     // Star(),
     // Palette(),
     // HelloWidget(),
@@ -99,11 +99,11 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
             bottomNavigationBar: BottomNavigationBar(
               type: BottomNavigationBarType.fixed,
               items: const <BottomNavigationBarItem>[
-                //   BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-                //   BottomNavigationBarItem(
-                //     icon: Icon(Icons.wb_cloudy),
-                //     label: 'Gugudan',
-                //   ),
+                BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.wb_cloudy),
+                  label: 'Gugudan',
+                ),
                 //   BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Star'),
                 //   BottomNavigationBarItem(
                 //     icon: Icon(Icons.palette),
