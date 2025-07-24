@@ -3,6 +3,7 @@
 // 1. 터미널에서 install하거나
 // 2. pubspec.yaml에 직접 작성하고 저장
 
+import 'package:counter/day14/player.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -11,10 +12,23 @@ void main() {
   runApp(MyApp());
 }
 
-// url launcher 쓰기위한 변수 선언
-final Uri _url = Uri.parse('https://naver.com');
-
 class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(title: "외부라이브러리 가져오기", home: MainPage());
+  }
+}
+
+class MainPage extends StatelessWidget {
+  // url launcher 쓰기위한 변수 선언
+  final Uri _url = Uri.parse('https://naver.com');
+
+  Future<void> _launchUrl() async {
+    if (!await launchUrl(_url)) {
+      throw Exception('Could not launch $_url');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -35,17 +49,23 @@ class MyApp extends StatelessWidget {
                 onPressed: _launchUrl,
                 child: Text("show Flutter homepage"),
               ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return AudioPage();
+                      },
+                    ),
+                  );
+                },
+                child: Text("음악재생하기"),
+              ),
             ],
           ),
         ),
       ),
     );
-  }
-}
-
-// url런처 실행 함수
-Future<void> _launchUrl() async {
-  if (!await launchUrl(_url)) {
-    throw Exception('Could not launch $_url');
   }
 }
