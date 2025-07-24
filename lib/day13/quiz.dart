@@ -28,11 +28,11 @@ class Hotel extends StatefulWidget {
 class HotelState extends State<StatefulWidget> {
   Map data = {
     // day 의 value 는 DateTime 으로 변경
-    "day": "",
+    "day": null,
     // time 의 value 는 TimeOfDay 로 변경
-    "time": "",
-    "room": "",
-    "name": "",
+    "time": null,
+    "room": null,
+    "name": null,
     "userAgreed": false,
   };
 

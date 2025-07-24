@@ -1,3 +1,4 @@
+import 'package:counter/day13/quiz/room.dart';
 import 'package:flutter/material.dart';
 
 class TimePage extends StatefulWidget {
@@ -14,14 +15,12 @@ class TimePage extends StatefulWidget {
 }
 
 class TimePageState extends State<TimePage> {
-  TimeOfDay? selectedTime;
   late Map givenData;
 
   TimePageState({required Map data}) {
     givenData = data;
   }
 
-  // 시간을 selectedTime 변수에 저장하는 기능을 하는 함수
   void selectTime() async {
     final pickedTime = await showTimePicker(
       context: context,
@@ -40,7 +39,7 @@ class TimePageState extends State<TimePage> {
       body: Column(
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               ElevatedButton(
                 onPressed: () {
@@ -49,13 +48,25 @@ class TimePageState extends State<TimePage> {
                 child: Text("시간 선택"),
               ),
               Text(
-                givenData["time"] != ""
+                givenData["time"] != null
                     ? givenData["time"]!.format(context)
                     : "시간이 선택되지 않았습니다.",
               ),
             ],
           ),
-          ElevatedButton(onPressed: () {}, child: Text("방 선택하러 가기")),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) {
+                    return RoomPage(data: givenData);
+                  },
+                ),
+              );
+            },
+            child: Text("방 선택하러 가기"),
+          ),
         ],
       ),
     );

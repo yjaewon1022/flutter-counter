@@ -21,8 +21,9 @@ class DayPageState extends State<DayPage> {
     givenData = data;
   }
 
-  // 날짜를 selectedDate 변수에 저장하는 기능을 하는 함수
   void selectDate() async {
+    print(givenData);
+
     final pickedDate = await showDatePicker(
       context: context,
       initialDate: DateTime.now(), // 기본 날짜
@@ -33,6 +34,8 @@ class DayPageState extends State<DayPage> {
     setState(() {
       givenData["day"] = pickedDate;
     });
+
+    print(givenData);
   }
 
   @override
@@ -57,6 +60,7 @@ class DayPageState extends State<DayPage> {
               ),
             ],
           ),
+
           ElevatedButton(
             onPressed: () {
               Navigator.push(
