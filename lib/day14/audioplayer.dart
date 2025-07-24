@@ -109,6 +109,17 @@ class AudioPageState extends State<AudioPage> {
     await player.stop();
   }
 
+  // Slider를 옮겼을 때 해당 위치(재생시간) 에 맞게 변경해주는 기능
+  moveMusic(double seconds) async {
+    // 현재 사용자가 Slider 를 이용해서 옮긴 값은 double로 저장이 됨.
+    // 우리의 음악 재생 player는 재생시간을 Duration 타입으로 이용하고 있기 때문에
+    // 우리의 double 값을 Duration 으로 변경해주는 코드를 작성해야 함.
+    final newPosition = Duration(seconds: seconds.toInt());
+
+    // seek = 이후에 입력한 구간(재생시간)으로 옮기겠다.
+    await player.seek(newPosition);
+  }
+
   @override
   void dispose() {
     player.dispose();
@@ -132,9 +143,7 @@ class AudioPageState extends State<AudioPage> {
               // 사용자가 선택할 수 있게 지정할 수 있다!
               // divisions: 10,
               onChanged: (double newValue) {
-                setState(() {
-                  value = newValue;
-                });
+                moveMusic(newValue);
               },
             ),
             ElevatedButton(
