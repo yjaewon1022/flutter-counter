@@ -1,3 +1,4 @@
+import 'package:counter/day13/quiz/room.dart';
 import 'package:flutter/material.dart';
 
 class TimePage extends StatefulWidget {
@@ -55,7 +56,14 @@ class TimePageState extends State<TimePage> {
           ),
           ElevatedButton(
             onPressed: () {
-              print(givenData);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) {
+                    return RoomPage(data: givenData);
+                  },
+                ),
+              );
             },
             child: Text("방 선택하러 가기"),
           ),
