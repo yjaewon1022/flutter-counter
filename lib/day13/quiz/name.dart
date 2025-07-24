@@ -38,6 +38,21 @@ class NamePageState extends State<NamePage> {
                 givenData['name'] = value;
               },
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text("이 호텔에 묵는 것을 동의합니다."),
+                Checkbox(
+                  value: givenData["userAgreed"],
+                  onChanged: (value) {
+                    setState(() {
+                      givenData["userAgreed"] = value!;
+                    });
+                  },
+                ),
+              ],
+            ),
+
             ElevatedButton(
               onPressed: () {
                 print(givenData);
