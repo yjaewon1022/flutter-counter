@@ -76,13 +76,19 @@ class AudioPageState extends State<AudioPage> {
     // player.play() 기능을 통해서 음악을 실제로 재생할 수 있음!
     // UrlSource('링크') = 링크에 있는 소스를 가지고 와라.
     // player.play 를 통해서 () 안에 있는 음악 파일을 재생할 수 있게 해주는 코드는 다음과 같음
-
+    // UrlSource 로 음악파일을 인터넷에서 가져오게 되면
+    //인터넷이 작동하지 않을 때에는 음악 재생 x
+    // 인터넷이 작동하지 않아도 음악 재생할 수 있게 만들어보고자 함
+    //AssetSource('파일경로') -> 이용하면 됨
     try {
-      await player.play(
-        UrlSource(
-          'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-        ),
-      );
+      //AssetSource('파일경로')로 파일
+      //현재 앱에서는  우리가 만든 폴더를 특수한 방법으로 인식시켜줘야 컴퓨터가 해당 폴더를 확인 할 수 있ㅇㅁ
+      //경로 지정했지만 앱이 해당 경로에 접근 권한 없음
+      //앱이 이 폴더로 접근 할 수 있는 방법 => pubspec.yaml 파일 수정
+      //pubspec.yaml 파일에서 assets: 이용해서 수정
+      //AssetSource() 기본적으로 /assets 폴더를 가리킴
+      //파일 경로에 assets 제외한 나머지를 파일경로로 작성하면 됨
+      await player.play(AssetSource("audio/SoundHelix-Song-1.mp3"));
     } catch (error) {
       print("에러 : $error");
     }
