@@ -56,6 +56,7 @@ class Gugudan extends StatelessWidget {
     }
 
     return Scaffold(
+      appBar: AppBar(title: Text('구구단')),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [

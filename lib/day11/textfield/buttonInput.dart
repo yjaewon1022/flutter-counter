@@ -29,6 +29,7 @@ class ButtonInputTextFieldState extends State<ButtonInputTextFieldWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text('계산기')),
       body: Container(
         padding: EdgeInsets.all(10),
         child: ListView(
